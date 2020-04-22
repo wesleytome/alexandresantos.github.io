@@ -1,0 +1,85 @@
+/* Add here all your CSS customizations */
+html .btn-secondary{
+  background-color: #003c56;
+}
+
+section.section.primary{
+  margin-top:0;  
+  padding-top: 100px;
+}
+
+#header .header-body {
+  padding:5px;
+}
+
+#header .header-nav-main {
+  margin-top:0;
+}
+
+#header .header-nav-main .nav-pills>li+li a{
+
+}
+
+#header.header-narrow .header-nav.header-nav-stripe nav > ul > li > a,
+#header.header-narrow .header-nav.header-nav-stripe nav > ul > li:hover > a, 
+#header.header-narrow .header-nav.header-nav-dark-dropdown nav > ul > li > a, 
+#header.header-narrow .header-nav.header-nav-dark-dropdown nav > ul > li:hover > a{
+  margin:0;
+}
+
+
+#header .header-nav-main .nav-pills>li.active,#header .header-nav .nav-pills>li.active {
+  background-color: #fff;
+}
+
+.slotholder{
+  background: #36bfe0;
+}
+.tp-bgimg.defaultimg{
+  background-size: auto !important;
+  background-position: left bottom !important;
+}
+
+.home-intro {
+  background: #003c56;
+  padding-bottom:0;
+}
+.home-intro ul{
+  list-style: none;
+}
+.home-intro .intro-extra-info h4{
+  margin-bottom:0;
+}
+.home-intro .intro-extra-info p{
+  margin-bottom:0;
+  padding:0;
+  font-size:90%;
+}
+.home-intro .intro-extra-info small{
+  position: absolute;
+  margin-top: -22px;
+}
+
+#footer{
+  background: #3aabdd;
+  border-top: 4px solid #003c56;
+}
+#footer .footer-copyright{
+  border:0;
+  background: #003c56;
+}
+#footer .footer-copyright p{
+  color: #3aabdd;
+}
+
+
+/*PÁGINAS INTERNAS*/
+.breadcrumb>.active{
+  color:#003c56;
+}
+
+/*SOBRE*/
+.sobre .page-header{
+  background-color: #3aabdd;
+  padding: 90px 0 20px;
+}
