@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  alexandre-santos-site:
+    container_name: cnt-alexandre-santos-site
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5174:5174"
+    volumes:
+      - ./:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+      - CHOKIDAR_USEPOLLING=true # Necessário para hot-reload no Docker
+    command: npm run dev
