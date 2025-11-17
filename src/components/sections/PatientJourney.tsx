@@ -86,7 +86,7 @@ export function PatientJourney() {
 
             {/* Etapas da timeline */}
             <div className="space-y-12">
-              {journeySteps.map((step, index) => (
+              {journeySteps.map((step) => (
                 <div key={step.number} className="relative flex items-start gap-6">
                   {/* Círculo com ícone */}
                   <div className="relative flex-shrink-0 z-10">
