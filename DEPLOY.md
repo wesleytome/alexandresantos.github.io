@@ -47,6 +47,18 @@ Isso é configurado automaticamente no workflow do GitHub Actions.
 
 ## 🐛 Solução de Problemas
 
+### Erro: "Get Pages site failed" ou "Not Found"
+
+**Este é o erro mais comum!** Significa que o GitHub Pages não está habilitado no repositório.
+
+**Solução:**
+1. Acesse o repositório no GitHub
+2. Vá em **Settings** (Configurações)
+3. No menu lateral, clique em **Pages**
+4. Em **Source**, selecione **GitHub Actions**
+5. Salve as configurações
+6. Execute o workflow novamente (faça um novo push ou execute manualmente em Actions)
+
 ### O site não carrega após o deploy
 
 1. Verifique se o GitHub Pages está habilitado (Settings > Pages)
