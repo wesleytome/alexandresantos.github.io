@@ -74,11 +74,28 @@ O workflow agora inclui `enablement: true` que tenta habilitar o GitHub Pages au
 - Repositórios públicos: GitHub Pages funciona normalmente
 - Repositórios privados: Requer GitHub Pro/Team/Enterprise para GitHub Pages
 
+### Erro: "GET /src/main.tsx 404" ou site não carrega
+
+**Sintoma:** O site tenta carregar `/src/main.tsx` diretamente em vez do bundle compilado.
+
+**Causa:** O build não foi processado corretamente ou o HTML não foi atualizado.
+
+**Solução:**
+1. Verifique se o workflow de build foi executado com sucesso
+2. Verifique se o arquivo `.nojekyll` está na pasta `public/` (já está incluído)
+3. Faça um novo push para forçar um novo build:
+   ```bash
+   git commit --allow-empty -m "Trigger rebuild"
+   git push
+   ```
+4. Aguarde o workflow completar e verifique o deploy novamente
+
 ### O site não carrega após o deploy
 
 1. Verifique se o GitHub Pages está habilitado (Settings > Pages)
 2. Verifique se o workflow foi executado com sucesso (Actions)
 3. Aguarde alguns minutos - pode levar até 10 minutos para o DNS propagar
+4. Limpe o cache do navegador (Ctrl+Shift+R ou Cmd+Shift+R)
 
 ### Rotas não funcionam (404)
 

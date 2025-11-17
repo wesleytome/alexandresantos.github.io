@@ -47,6 +47,19 @@ jobs:
         env:
           VITE_BASE_PATH: ${{ steps.base_path.outputs.base_path }}
 
+      - name: Verify build output
+        run: |
+          if [ ! -f "dist/index.html" ]; then
+            echo "❌ dist/index.html not found!"
+            exit 1
+          fi
+          if grep -q "/src/main.tsx" dist/index.html; then
+            echo "❌ Build failed - index.html still references source files!"
+            cat dist/index.html
+            exit 1
+          fi
+          echo "✅ Build verified successfully"
+
       - name: Setup Pages
         uses: actions/configure-pages@v4
         with:
