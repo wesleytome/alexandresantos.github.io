@@ -16,7 +16,7 @@ export const testimonials: Testimonial[] = [
     rating: 5,
     text: 'Excelente atendimento! O Dr. Alexandre é muito profissional e atencioso. Meu tratamento com implantes foi perfeito, sem dor e com resultados incríveis. Recomendo muito!',
     date: '2024-01-15',
-    avatar: '/images/avatar-maria.jpg'
+    avatar: 'https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop'
   },
   {
     id: '2',
@@ -25,7 +25,7 @@ export const testimonials: Testimonial[] = [
     rating: 5,
     text: 'Fiz clareamento dental e fiquei muito satisfeito com o resultado. A equipe é muito competente e o ambiente da clínica é acolhedor. Voltarei para outros tratamentos!',
     date: '2024-02-20',
-    avatar: '/images/avatar-joao.jpg'
+    avatar: 'https://images.pexels.com/photos/1043471/pexels-photo-1043471.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop'
   },
   {
     id: '3',
@@ -34,7 +34,7 @@ export const testimonials: Testimonial[] = [
     rating: 5,
     text: 'A harmonização orofacial que fiz com o Dr. Alexandre superou minhas expectativas. Resultado natural e profissionalismo de primeira. Estou muito feliz!',
     date: '2024-03-10',
-    avatar: '/images/avatar-ana.jpg'
+    avatar: 'https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop'
   },
   {
     id: '4',
@@ -43,7 +43,7 @@ export const testimonials: Testimonial[] = [
     rating: 5,
     text: 'Profissional excepcional! Fiz lentes de contato dental e o resultado foi perfeito. Meu sorriso ficou exatamente como eu queria. Muito obrigado!',
     date: '2024-03-25',
-    avatar: '/images/avatar-carlos.jpg'
+    avatar: 'https://images.pexels.com/photos/1040880/pexels-photo-1040880.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop'
   },
   {
     id: '5',
@@ -52,7 +52,7 @@ export const testimonials: Testimonial[] = [
     rating: 5,
     text: 'O tratamento com toxina botulínica foi excelente. Resultado natural e duradouro. O Dr. Alexandre é muito cuidadoso e detalhista. Recomendo!',
     date: '2024-04-05',
-    avatar: '/images/avatar-patricia.jpg'
+    avatar: 'https://images.pexels.com/photos/1065084/pexels-photo-1065084.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop'
   }
 ]
 

@@ -1,58 +1,62 @@
 import { Link } from 'react-router-dom'
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from '@/components/ui/carousel'
 import { Button } from '@/components/ui/button'
+import { Badge } from '@/components/ui/badge'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { services } from '@/data/services'
-import { useState } from 'react'
 import { AspectRatio } from '@/components/ui/aspect-ratio'
+import { ArrowRight } from 'lucide-react'
 import type { Service } from '@/data/services'
 
-interface ServiceCarouselCardProps {
+interface ServiceCardProps {
   service: Service
 }
 
-function ServiceCarouselCard({ service }: ServiceCarouselCardProps) {
+function ServiceCard({ service }: ServiceCardProps) {
   return (
-    <div className="h-full bg-white rounded-lg overflow-hidden shadow-sm flex flex-col">
-      {/* Imagem */}
-      <div className="relative w-full">
+    <div className="group h-full bg-white rounded-lg overflow-hidden shadow-sm flex flex-col hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+      {/* Imagem com badge sobreposta */}
+      <div className="relative w-full overflow-hidden">
         <AspectRatio ratio={4 / 3}>
           <img
             src={service.image}
             alt={service.title}
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
           />
         </AspectRatio>
+        {/* Badge sobre a imagem */}
+        <div className="absolute top-4 right-4 z-10">
+          <Badge
+            className={service.category === 'odontologia' ? 'badge-odontologia' : 'badge-hof'}
+          >
+            {service.category === 'odontologia' ? 'Odontologia' : 'Estética Facial'}
+          </Badge>
+        </div>
       </div>
       
       {/* Conteúdo */}
       <div className="p-6 flex flex-col flex-grow">
-        {/* Título com linha embaixo */}
-        <div className="mb-4">
-          <h3 className="text-xl font-heading font-bold text-foreground mb-2">
-            {service.title}
-          </h3>
-          <div className="w-12 h-0.5 bg-foreground"></div>
-        </div>
+        {/* Título */}
+        <h3 className="text-subtitle font-body text-fg mb-3">
+          {service.title}
+        </h3>
         
         {/* Descrição breve */}
         <p className="text-sm text-foreground/80 leading-relaxed mb-6 flex-grow">
           {service.shortDescription}
         </p>
         
-        {/* Botão */}
+        {/* Botão com ícone */}
         <Button
           asChild
-          variant="outline"
-          className="w-full border-rose-gold text-foreground hover:bg-rose-gold/10"
+          className="w-full btn-primary border-0 group/btn"
         >
-          <Link to={`/servicos/${service.id}`}>
-            SABER MAIS
+          <Link to={
+            service.category === 'odontologia'
+              ? `/odontologia/${service.id}`
+              : `/estetica-facial/${service.id}`
+          }>
+            Saiba Mais
+            <ArrowRight className="ml-2 h-4 w-4 group-hover/btn:translate-x-1 transition-transform" />
           </Link>
         </Button>
       </div>
@@ -61,72 +65,88 @@ function ServiceCarouselCard({ service }: ServiceCarouselCardProps) {
 }
 
 export function ServicesSection() {
-  const [selectedService, setSelectedService] = useState<Service | null>(null)
+  const odontologiaServices = services.filter(s => s.category === 'odontologia')
+  const esteticaServices = services.filter(s => s.category === 'estetica')
 
   return (
-    <section className="py-20 bg-background">
+    <section 
+      className="py-20 bg-gradient-to-b from-amber-50 to-white"
+    >
       <div className="container mx-auto px-4">
         {/* Header */}
         <div className="max-w-3xl mb-12">
-          <h2 className="text-4xl md:text-5xl font-heading font-bold mb-3">
-            <span className="text-foreground">Descubra um</span>{' '}
-            <span className="text-rose-gold">novo você</span>
+          <h2 className="section-heading">
+            <span className="section-heading-primary">Descubra um</span>{' '}
+            <span className="section-heading-accent">novo você</span>
           </h2>
           {/* Linha horizontal curta embaixo de "Descubra um" */}
-          <div className="w-16 h-0.5 bg-foreground mb-4"></div>
-          <p className="text-base text-foreground/80 font-sans leading-relaxed max-w-2xl">
+          <div className="section-heading-divider"></div>
+          <p className="text-base text-foreground/80 leading-relaxed max-w-2xl">
             Quando se trata de escolher uma clínica estética, não confie seu corpo a qualquer pessoa. Escolha qualquer um de nossos serviços de procedimentos estéticos e reconstrutivos.
           </p>
         </div>
 
-        {/* Grid: Lista à esquerda e Carrossel à direita */}
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
-          {/* Lado esquerdo: Lista de serviços */}
-          <div className="lg:col-span-1">
-            <div className="bg-soft-blush rounded-lg p-6 h-full">
-              <h3 className="text-lg font-heading font-semibold text-rose-gold mb-6">
-                Todos os serviços
-              </h3>
-              <ul className="space-y-3">
-                {services.map((service) => (
-                  <li key={service.id}>
-                    <button
-                      onClick={() => setSelectedService(service)}
-                      className={`text-left text-sm font-sans transition-colors w-full ${
-                        selectedService?.id === service.id
-                          ? 'text-foreground font-semibold'
-                          : 'text-foreground hover:text-foreground'
-                      }`}
-                    >
-                      {service.title}
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-
-          {/* Lado direito: Carrossel de serviços */}
-          <div className="lg:col-span-3">
-            <Carousel
-              opts={{
-                align: 'start',
-                loop: true,
-              }}
-              className="w-full"
+        {/* Tabs com serviços */}
+        <Tabs defaultValue="odontologia" className="w-full">
+          <TabsList className="services-tabs-list">
+            <TabsTrigger 
+              value="odontologia"
+              className="services-tabs-trigger"
             >
-              <CarouselContent className="-ml-2 md:-ml-4">
-                {services.map((service) => (
-                  <CarouselItem key={service.id} className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
-                    <ServiceCarouselCard service={service} />
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-              <CarouselPrevious className="hidden md:flex -left-12 bg-white/80 hover:bg-white" />
-              <CarouselNext className="hidden md:flex -right-12 bg-white/80 hover:bg-white" />
-            </Carousel>
-          </div>
-        </div>
+              Odontologia
+              <Badge 
+                variant="secondary" 
+                className="ml-2 h-5 min-w-5 px-1.5 text-xs font-semibold"
+                style={{ 
+                  backgroundColor: 'rgba(255, 255, 255, 0.2)',
+                  color: 'inherit'
+                }}
+              >
+                {odontologiaServices.length}
+              </Badge>
+            </TabsTrigger>
+            <TabsTrigger 
+              value="estetica"
+              className="services-tabs-trigger"
+            >
+              Estética Facial
+              <Badge 
+                variant="secondary" 
+                className="ml-2 h-5 min-w-5 px-1.5 text-xs font-semibold"
+                style={{ 
+                  backgroundColor: 'rgba(255, 255, 255, 0.2)',
+                  color: 'inherit'
+                }}
+              >
+                {esteticaServices.length}
+              </Badge>
+            </TabsTrigger>
+          </TabsList>
+
+          {/* Tab Odontologia */}
+          <TabsContent 
+            value="odontologia" 
+            className="mt-0 data-[state=active]:animate-in data-[state=active]:fade-in-0 data-[state=active]:duration-300"
+          >
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {odontologiaServices.map((service) => (
+                <ServiceCard key={service.id} service={service} />
+              ))}
+            </div>
+          </TabsContent>
+
+          {/* Tab Estética Facial */}
+          <TabsContent 
+            value="estetica" 
+            className="mt-0 data-[state=active]:animate-in data-[state=active]:fade-in-0 data-[state=active]:duration-300"
+          >
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {esteticaServices.map((service) => (
+                <ServiceCard key={service.id} service={service} />
+              ))}
+            </div>
+          </TabsContent>
+        </Tabs>
       </div>
     </section>
   )

@@ -26,7 +26,7 @@ export const services: Service[] = [
       'Preserva a estrutura óssea facial',
       'Não compromete dentes adjacentes'
     ],
-    image: '/images/implantes.jpg',
+    image: '/src/images/services/implante-dentario.jpg',
     icon: 'tooth',
     price: 'A partir de R$ 2.500',
     duration: '45-60 minutos',
@@ -45,7 +45,7 @@ export const services: Service[] = [
       'Procedimento indolor',
       'Acompanhamento profissional'
     ],
-    image: '/images/clareamento.jpg',
+    image: '/src/images/services/clareamento-dental.jpg',
     icon: 'sparkles',
     price: 'A partir de R$ 800',
     duration: '60-90 minutos',
@@ -64,7 +64,7 @@ export const services: Service[] = [
       'Procedimento minimamente invasivo',
       'Personalização completa'
     ],
-    image: '/images/lentes.jpg',
+    image: '/src/images/services/lentes-de-contato-dental.jpg',
     icon: 'smile',
     price: 'A partir de R$ 1.500',
     duration: '2-3 sessões',
@@ -83,7 +83,7 @@ export const services: Service[] = [
       'Resultados imediatos',
       'Técnicas minimamente invasivas'
     ],
-    image: '/images/harmonizacao.jpg',
+    image: 'https://images.pexels.com/photos/1516680/pexels-photo-1516680.jpeg?auto=compress&cs=tinysrgb&w=800',
     icon: 'face',
     price: 'A partir de R$ 1.200',
     duration: '30-45 minutos',
@@ -102,7 +102,7 @@ export const services: Service[] = [
       'Procedimento rápido e seguro',
       'Aspecto natural'
     ],
-    image: '/images/toxina.jpg',
+    image: 'https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=800',
     icon: 'syringe',
     price: 'A partir de R$ 600',
     duration: '15-30 minutos',
@@ -121,7 +121,7 @@ export const services: Service[] = [
       'Material biocompatível',
       'Procedimento seguro e testado'
     ],
-    image: '/images/preenchimento.jpg',
+    image: 'https://images.pexels.com/photos/1181519/pexels-photo-1181519.jpeg?auto=compress&cs=tinysrgb&w=800',
     icon: 'droplet',
     price: 'A partir de R$ 1.000',
     duration: '30-45 minutos',

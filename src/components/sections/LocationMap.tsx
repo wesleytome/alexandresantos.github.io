@@ -10,8 +10,8 @@ export function LocationMap() {
 
   return (
     <section className="py-0 bg-background">
-      <div className="grid grid-cols-1 lg:grid-cols-2 h-[600px]">
-        {/* Mapa à esquerda */}
+      <div className="grid grid-cols-1 lg:grid-cols-[7fr_3fr] h-[600px]">
+        {/* Mapa à esquerda - 70% */}
         <div className="relative w-full h-full">
           <iframe
             src={`https://www.google.com/maps/embed/v1/place?key=YOUR_API_KEY&q=${encodeURIComponent(
@@ -27,37 +27,37 @@ export function LocationMap() {
           ></iframe>
         </div>
 
-        {/* Painel de informações à direita - fundo escuro elegante */}
-        <div className="bg-charcoal text-pearl-white p-8 lg:p-12 flex flex-col justify-center">
+        {/* Painel de informações à direita - 30% */}
+        <div className="bg-brand text-brand-contrast p-8 lg:p-12 flex flex-col justify-center">
           <div className="space-y-8 max-w-md">
             {/* Horário de funcionamento */}
             <div>
-              <h3 className="text-xl font-semibold mb-4 text-pearl-white">Horário de funcionamento</h3>
-              <div className="space-y-2 text-pearl-white/90">
-                <div className="flex justify-between">
+              <h3 className="text-subtitle font-body mb-4 text-brand-contrast">Horário de funcionamento</h3>
+              <div className="space-y-2 text-brand-contrast/90">
+                <div className="flex items-center">
                   <span className="font-medium">SEG - QUA:</span>
-                  <span>8h - 19h</span>
+                  <span className="ml-1">8h - 19h</span>
                 </div>
-                <div className="flex justify-between">
+                <div className="flex items-center">
                   <span className="font-medium">QUI:</span>
-                  <span>8h - 17h</span>
+                  <span className="ml-1">8h - 17h</span>
                 </div>
-                <div className="flex justify-between">
+                <div className="flex items-center">
                   <span className="font-medium">SEX:</span>
-                  <span>8h - 17h</span>
+                  <span className="ml-1">8h - 17h</span>
                 </div>
-                <div className="flex justify-between">
+                <div className="flex items-center">
                   <span className="font-medium">SÁB - DOM:</span>
-                  <span>Fechado</span>
+                  <span className="ml-1">Fechado</span>
                 </div>
               </div>
               
               {/* Agendar consulta */}
               <div className="mt-6">
-                <Button 
+                  <Button 
                   asChild
                   variant="outline"
-                  className="bg-transparent border-pearl-white/30 text-pearl-white hover:bg-rose-gold/20 hover:border-rose-gold/50"
+                  className="bg-transparent border-brand-contrast/30 text-brand-contrast hover:bg-brand-contrast/10 hover:border-brand-contrast/50"
                 >
                   <Link to="/contato" className="flex items-center gap-2">
                     <Calendar className="h-4 w-4" />
@@ -69,14 +69,14 @@ export function LocationMap() {
 
             {/* Detalhes de contato */}
             <div>
-              <h3 className="text-xl font-semibold mb-4 text-pearl-white">Detalhes de contato</h3>
-              <div className="space-y-4 text-pearl-white/90">
+              <h3 className="text-subtitle font-body mb-4 text-brand-contrast">Detalhes de contato</h3>
+              <div className="space-y-4 text-brand-contrast/90">
                 {/* Telefone */}
                 <div className="flex items-center gap-3">
                   <Phone className="h-5 w-5 flex-shrink-0" />
                   <a 
                     href={`tel:${businessInfo.phones.main.replace(/\D/g, '')}`}
-                    className="hover:text-rose-gold transition-colors"
+                    className="hover:text-brand-contrast transition-colors"
                   >
                     {businessInfo.phones.main}
                   </a>
@@ -87,7 +87,7 @@ export function LocationMap() {
                   <Mail className="h-5 w-5 flex-shrink-0" />
                   <a 
                     href={`mailto:${businessInfo.email}`}
-                    className="hover:text-rose-gold transition-colors"
+                    className="hover:text-brand-contrast transition-colors"
                   >
                     {businessInfo.email}
                   </a>
@@ -107,7 +107,7 @@ export function LocationMap() {
                 <Button 
                   asChild
                   variant="outline"
-                  className="bg-transparent border-pearl-white/30 text-pearl-white hover:bg-rose-gold/20 hover:border-rose-gold/50"
+                  className="bg-transparent border-brand-contrast/30 text-brand-contrast hover:bg-brand-contrast/10 hover:border-brand-contrast/50"
                 >
                   <a
                     href={googleMapsUrl}

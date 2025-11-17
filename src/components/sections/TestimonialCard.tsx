@@ -12,7 +12,7 @@ export function TestimonialCard({ testimonial }: TestimonialCardProps) {
         {/* Avatar circular à esquerda */}
         <Avatar className="h-16 w-16 flex-shrink-0">
           <AvatarImage src={testimonial.avatar} alt={testimonial.name} />
-          <AvatarFallback className="bg-warm-beige text-foreground">
+          <AvatarFallback className="bg-natural-beige text-foreground">
             {testimonial.name
               .split(' ')
               .map((n) => n[0])
@@ -24,17 +24,17 @@ export function TestimonialCard({ testimonial }: TestimonialCardProps) {
         {/* Conteúdo do depoimento */}
         <div className="flex-1">
           {/* Aspas grandes no topo */}
-          <div className="text-6xl text-rose-gold/30 font-serif leading-none mb-2 -mt-2">
+          <div className="text-6xl text-sage-green/30 leading-none mb-2 -mt-2">
             "
           </div>
           
           {/* Texto do depoimento */}
-          <p className="text-foreground/80 leading-relaxed font-sans text-sm mb-4">
+          <p className="text-foreground/80 leading-relaxed text-sm mb-4">
             {testimonial.text}
           </p>
           
           {/* Nome em negrito */}
-          <div className="font-bold text-foreground font-sans text-sm">
+          <div className="font-bold text-foreground text-sm">
             {testimonial.name}
           </div>
         </div>

@@ -1,41 +1,153 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Jost:wght@300;400;500;600;700&family=Tangerine:wght@700&display=swap');
 
 @import "tailwindcss";
 
+/* Fonte Tangerine Bold */
+@font-face {
+  font-family: 'Tangerine';
+  src: url('./fonts/Tangerine_Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 @theme {
-  --color-charcoal: #2C2C2C;
-  --color-pearl-white: #FAFAFA;
-  --color-soft-blush: #F5E6E0;
-  --color-warm-beige: #E8DDD4;
-  --color-rose-gold: #D4A574;
-  --color-soft-gray: #8B8B8B;
+  /* ============================================
+     PALETA ATUAL - TEMA NOVO
+     ============================================ */
   
-  --color-primary: #2C2C2C;
-  --color-primary-foreground: #FAFAFA;
-  --color-secondary: #E8DDD4;
-  --color-secondary-foreground: #2C2C2C;
-  --color-accent: #D4A574;
+  /* Tokens semânticos base */
+  --color-bg: #F7F9FB;         /* Base/Porcelain */
+  --color-fg: #1F2937;         /* Graphite */
+  --color-brand: #99b8bd;      /* Teal suave - Botões primários */
+  --color-brand-contrast: #f4f4f4;
+  --color-secondary: rgb(192, 152, 134);  /* Bege rosado - Botões secundários */
+  --color-accent: #D4AF37;     /* Soft Gold - Destaques comerciais */
+  --color-muted: #EEF2F7;      /* Cloud */
+  --color-info: #0EA5E9;
+  --color-success: #16A34A;
+  --color-warning: #F59E0B;
+  --color-danger: #DC2626;
+
+  /* Tokens do sistema (mapeados para compatibilidade) */
+  --color-primary: var(--color-brand);
+  --color-primary-foreground: var(--color-brand-contrast);
+  --color-secondary-system: var(--color-secondary);
+  --color-secondary-foreground: var(--color-brand-contrast);
+  --color-accent-system: var(--color-accent);
   --color-accent-foreground: #FFFFFF;
-  --color-neutral: #FAFAFA;
-  --color-neutral-foreground: #2C2C2C;
-  --color-background: #FAFAFA;
-  --color-foreground: #2C2C2C;
-  --color-muted: #F5E6E0;
-  --color-muted-foreground: #2C2C2C;
-  --color-border: #8B8B8B;
-  --color-input: #8B8B8B;
-  --color-ring: #2C2C2C;
+  --color-neutral: var(--color-bg);
+  --color-neutral-foreground: var(--color-fg);
+  --color-background: var(--color-bg);
+  --color-foreground: var(--color-fg);
+  --color-muted: var(--color-muted);
+  --color-muted-foreground: var(--color-fg);
+  --color-border: #E5E7EB;
+  --color-input: #E5E7EB;
+  --color-ring: var(--color-brand);
   --color-card: #FFFFFF;
-  --color-card-foreground: #2C2C2C;
-  --color-destructive: #EF4444;
+  --color-card-foreground: var(--color-fg);
+  --color-destructive: var(--color-danger);
   --color-destructive-foreground: #FFFFFF;
+
+  /* Cores específicas por categoria */
+  --color-odontologia: var(--color-brand);        /* Teal suave */
+  --color-hof: var(--color-secondary);            /* Bege rosado */
+  --color-destaque: var(--color-accent);          /* Champagne Gold */
   
-  --font-heading: 'Playfair Display', serif;
-  --font-body: 'Inter', sans-serif;
+  /* Cores de texto e backgrounds */
+  --color-text-primary: var(--color-fg);
+  --color-text-secondary: #6B7280;
+  --color-bg-primary: var(--color-bg);
+  --color-bg-secondary: #FFFFFF;
+
+  /* ============================================
+     TEMA ANTERIOR - VERDE ESCURO (COMENTADO PARA REVERSÃO)
+     ============================================
+  --color-bg: #F7F9FB;
+  --color-fg: #1F2937;
+  --color-brand: #1E3A5F;
+  --color-brand-contrast: #FFFFFF;
+  --color-secondary: #2FA87C;
+  --color-accent: #D4AF37;
+  --color-muted: #EEF2F7;
+  --color-odontologia: #1E3A5F;
+  --color-hof: #2FA87C;
+  --color-destaque: #D4AF37;
+  --color-text-primary: #1F2937;
+  --color-text-secondary: #6B7280;
+  --color-bg-primary: #F7F9FB;
+  --color-bg-secondary: #FFFFFF;
+  ============================================ */
+
+  /* ============================================
+     TEMA ANTERIOR - BASEADO NA IMAGEM DO HEADER (COMENTADO PARA REVERSÃO)
+     ============================================
+  --color-bg: #FFFFFF;
+  --color-fg: #2D2D2D;
+  --color-brand: #5FB3B3;
+  --color-brand-contrast: #FFFFFF;
+  --color-secondary: #C9A961;
+  --color-accent: #C9A961;
+  --color-muted: #F5F5F5;
+  --color-odontologia: #5FB3B3;
+  --color-hof: #C9A961;
+  --color-destaque: #C9A961;
+  --color-text-primary: #2D2D2D;
+  --color-text-secondary: #6B6B6B;
+  --color-bg-primary: #FFFFFF;
+  --color-bg-secondary: #FAFAFA;
+  ============================================ */
   
+  /* Fontes */
+  --font-heading: 'Cormorant Garamond', serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-display: 'Cormorant Garamond', serif; /* Hero */
+  --font-tangerine: 'Tangerine', cursive;
+  --font-jost: 'Jost', sans-serif;
+  
+  /* Border radius */
   --radius-lg: 0.5rem;
   --radius-md: 0.375rem;
   --radius-sm: 0.25rem;
+
+  /* ============================================
+     PALETA ANTERIOR (COMENTADA PARA REVERSÃO)
+     ============================================
+  --color-sage-green: #3D5A2F;
+  --color-soft-green: #E8F5E9;
+  --color-mint-cream: #F1F8F4;
+  --color-earth-brown: #8B6F47;
+  --color-warm-taupe: #A0826D;
+  --color-cream-white: #F5F5F0;
+  --color-natural-beige: #E5DDD0;
+  --color-forest-green: #2D5016;
+  --color-soft-gray: #8B8B8B;
+  --color-badge-cream: #F6F1EB;
+  --color-badge-hero-bg: #E2D7BF;
+  --color-heading-green: #1F3C14;
+  --color-text-dark: #0C200A;
+  --color-badge-text: #C1A280;
+  --color-button-text-light: #F8F4ED;
+  --color-button-bg-light: #F4F2EF;
+  --color-button-text-green: #3D5A2E;
+  --color-subtitle-green: #203D14;
+  --color-heading-primary: #782F42;
+  --color-heading-accent: #782F4296;
+  --color-badge-service-bg: #9ABCA3;
+  --color-badge-service-text: #F5F5F0;
+  --color-button-service-bg: #203D14;
+  --color-button-service-text: #F5F5F0;
+  --color-card-title: #8B6F47;
+  --color-footer-bg: #2C433F;
+  --color-header-button: #782F42;
+  --color-button-estetica-bg: #EBE0CD;
+  --color-button-text-light: #EBE0CD;
+  --color-button-estetica-text: #782F42;
+  --color-hero-text: #745F37;
+  --color-gradient-beige: #DED1B6;
+  --color-gradient-primary-rgba: rgba(193, 162, 128, 0.2);
+  ============================================ */
 }
 
 @layer base {
@@ -70,8 +182,12 @@
   body {
     @apply bg-background text-foreground font-body;
   }
-  h1, h2, h3, h4, h5, h6 {
+  h1, h2 {
     @apply font-heading;
+  }
+  h3, h4, h5, h6 {
+    @apply font-body;
+    font-weight: 600;
   }
 }
 
@@ -100,5 +216,250 @@
 
   .animate-accordion-up {
     animation: accordion-up 0.2s ease-out;
+  }
+
+  /* Padrão de Títulos de Seção - Split Heading */
+  /* 
+   * Uso: 
+   * <h2 className="section-heading">
+   *   <span className="section-heading-primary">Primeira parte</span>{' '}
+   *   <span className="section-heading-accent">Segunda parte</span>
+   * </h2>
+   */
+  .section-heading {
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    font-weight: 600;
+    @apply font-heading mb-3;
+  }
+
+  .section-heading-primary {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    color: #2d4440;
+  }
+
+  .section-heading-accent {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    color: #c3994a;
+  }
+
+  /* Linha decorativa abaixo do título (opcional) */
+  .section-heading-divider {
+    @apply w-16 h-0.5 mb-4;
+    background-color: #c3994a;
+  }
+
+  /* Badge do Hero */
+  .badge-hero {
+    color: #2e3e35;
+    /* border: 1px solid var(--color-accent); */
+  }
+
+  @supports (color: color-mix(in lab, red, red)) {
+    .badge-hero {
+      background-color: color-mix(in srgb, #2e3e35 10%, transparent);
+    }
+  }
+
+  .badge-hero:hover {
+    opacity: 0.9;
+  }
+
+  /* Nome do Dr. Alexandre Santos */
+  .hero-name {
+    font-size: 4.5em;
+    margin-bottom: -15px;
+    text-align: left;
+  }
+
+  /* Especialização */
+  .hero-specialization {
+    font-size: 0.9em;
+    color: #c3994a;
+  }
+
+  /* Título principal do Hero */
+  .hero-main-title {
+    font-size: 3.5em;
+    line-height: 1em;
+  }
+
+  /* Textos do Hero */
+  .hero-title {
+    color: #4e6759;
+  }
+
+  .hero-subtitle {
+    font-size: 1.3em;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-weight: 400;
+  }
+
+  /* Botão Estética Facial do Hero */
+  .button-estetica-hero {
+    border-radius: 7px;
+    background-color: rgb(224, 215, 197);
+    color: #c1a280;
+    border: none;
+    transition: all 0.2s;
+  }
+
+  .button-estetica-hero:hover {
+    filter: brightness(110%);
+  }
+
+  /* Forma de escudo para o logo */
+  .logo-shield {
+    background-color: rgb(52, 54, 58);
+    width: 57%;
+    height: 116%;
+    margin-left: 49px;
+    margin-top: -40px;
+    clip-path: circle(40%);
+  }
+
+  /* Tabs de Serviços - Estilo customizado */
+  .services-tabs-list {
+    @apply text-muted-foreground inline-flex h-9 w-full items-center justify-center rounded-lg p-[3px] mb-8;
+    background: none;
+    border-bottom: 1px solid var(--color-heading-accent);
+  }
+
+  .services-tabs-trigger {
+    @apply inline-flex h-[calc(100%-1px)] flex-1 items-center justify-center gap-1.5 rounded-md border border-transparent px-2 py-1 text-sm font-medium whitespace-nowrap transition-[color,box-shadow] focus-visible:ring-[3px] focus-visible:outline-1 disabled:pointer-events-none disabled:opacity-50;
+    background: none;
+    border: none;
+  }
+
+  .services-tabs-trigger[data-state="active"] {
+    background: var(--color-fg);
+    color: var(--color-bg);
+  }
+
+  .services-tabs-trigger[data-state="active"] .badge {
+    background-color: rgba(255, 255, 255, 0.3) !important;
+    color: var(--color-bg) !important;
+  }
+
+  /* Gradientes padronizados para seções */
+  .gradient-section-primary {
+    background: linear-gradient(to bottom, var(--color-bg), color-mix(in srgb, var(--color-secondary) 20%, transparent));
+  }
+
+  .gradient-section-inverted {
+    background: linear-gradient(to bottom, color-mix(in srgb, var(--color-secondary) 20%, transparent), var(--color-bg));
+  }
+
+      .gradient-top-section {
+        background: radial-gradient(at 100% 50%, #ffffff, color-mix(in srgb, #d5c5bf 15%, var(--color-bg)));
+      }
+
+  /* Cores de texto padronizadas */
+  .text-nav-link {
+    color: var(--color-fg);
+  }
+
+  .text-nav-link:hover {
+    color: var(--color-brand);
+  }
+
+  /* Backgrounds padronizados */
+  .bg-top-bar {
+    background-color: var(--color-muted);
+  }
+
+  .bg-nav-bar {
+    background-color: var(--color-bg);
+  }
+
+  /* Fonte Tangerine para logo */
+  .font-tangerine {
+    font-family: var(--font-tangerine);
+    color: #c3994a;
+    text-shadow: 0 2px 4px rgba(78, 103, 89, 0.2);
+    font-size: 2.3rem;
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+    letter-spacing: 0;
+    text-transform: none;
+    text-decoration: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 4.5rem;
+    margin-bottom: -30px;
+
+  }
+
+  /* ============================================
+     CLASSES DE BOTÕES - NOVA PALETA
+     ============================================ */
+  
+  /* Botão primário */
+  .btn-primary {
+    background-color: #9bbda4;
+    color: #f5f3f0;
+    border-radius: 7px;
+    transition: filter 0.2s;
+  }
+
+  .btn-primary:hover {
+    filter: brightness(110%);
+  }
+
+  /* Botão secundário */
+  .btn-secondary {
+    background-color: rgb(192, 152, 134);
+    color: #f4f4f4;
+    border-radius: 7px;
+    transition: all 0.2s;
+  }
+
+  .btn-secondary:hover {
+    filter: brightness(110%);
+  }
+
+  /* Botão terciário (classe geral) */
+  .btn-tertiary {
+    color: #cdad72;
+    border: 1px solid #cdad72;
+    border-radius: 7px;
+    background: #f6f8fa;
+    padding: 18px;
+    transition: all 0.2s;
+  }
+
+  .btn-tertiary:hover {
+    background: #f0f2f5;
+    filter: brightness(95%);
+  }
+
+  /* ============================================
+     CLASSES DE BADGES - NOVA PALETA
+     ============================================ */
+  
+  /* Badge HOF */
+  .badge-hof {
+    background-color: color-mix(in srgb, var(--color-secondary) 15%, transparent);
+    color: var(--color-secondary);
+    border: none;
+  }
+
+  /* Badge Odontologia */
+  .badge-odontologia {
+    background-color: color-mix(in srgb, var(--color-brand) 10%, transparent);
+    color: var(--color-brand);
+    border: none;
+  }
+
+  /* Badge com destaque (Champagne Gold) */
+  .badge-destaque {
+    background-color: color-mix(in srgb, var(--color-accent) 10%, transparent);
+    color: var(--color-accent);
+    border: 1px solid var(--color-accent);
   }
 }

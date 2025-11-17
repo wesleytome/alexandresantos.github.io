@@ -8,17 +8,22 @@ import { services } from '@/data/services'
 
 export function Footer() {
   return (
-    <footer className="bg-primary text-primary-foreground">
+    <footer 
+      style={{
+        backgroundColor: '#2e3e35',
+        color: 'rgb(240, 237, 231)'
+      }}
+    >
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Coluna 1: Logo e Descrição */}
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
-              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-secondary text-primary">
+              <div className="flex h-10 w-10 items-center justify-center rounded-full" style={{ backgroundColor: 'rgba(240, 237, 231, 0.2)', color: 'rgb(240, 237, 231)' }}>
                 <span className="text-xl font-bold">DA</span>
               </div>
               <div className="flex flex-col">
-                <span className="text-lg font-heading font-bold">
+                <span className="text-lg font-body font-semibold" style={{ color: 'rgb(240, 237, 231)' }}>
                   {businessInfo.name}
                 </span>
                 <span className="text-xs opacity-80">
@@ -68,7 +73,7 @@ export function Footer() {
 
           {/* Coluna 2: Links Institucionais */}
           <div className="space-y-4">
-            <h3 className="text-lg font-heading font-semibold">Institucional</h3>
+            <h3 className="text-lg font-body font-semibold" style={{ color: 'rgb(240, 237, 231)' }}>Institucional</h3>
             <ul className="space-y-2">
               <li>
                 <Link
@@ -103,7 +108,7 @@ export function Footer() {
                 </Link>
               </li>
             </ul>
-            <Separator className="bg-primary-foreground/20" />
+            <Separator style={{ backgroundColor: 'rgba(240, 237, 231, 0.2)' }} />
             <ul className="space-y-2">
               <li>
                 <a
@@ -126,7 +131,7 @@ export function Footer() {
 
           {/* Coluna 3: Serviços */}
           <div className="space-y-4">
-            <h3 className="text-lg font-heading font-semibold">Serviços</h3>
+            <h3 className="text-lg font-body font-semibold" style={{ color: 'rgb(240, 237, 231)' }}>Serviços</h3>
             <ul className="space-y-2">
               {services.slice(0, 6).map((service) => (
                 <li key={service.id}>
@@ -143,18 +148,18 @@ export function Footer() {
 
           {/* Coluna 4: Horários */}
           <div className="space-y-4">
-            <h3 className="text-lg font-heading font-semibold">Horários</h3>
+            <h3 className="text-lg font-body font-semibold" style={{ color: 'rgb(240, 237, 231)' }}>Horários</h3>
             <Table>
               <TableBody>
-                <TableRow className="border-primary-foreground/20">
+                <TableRow style={{ borderColor: 'rgba(240, 237, 231, 0.2)' }}>
                   <TableCell className="text-sm opacity-90">Segunda - Sexta</TableCell>
                   <TableCell className="text-sm opacity-90">8:00 - 18:00</TableCell>
                 </TableRow>
-                <TableRow className="border-primary-foreground/20">
+                <TableRow style={{ borderColor: 'rgba(240, 237, 231, 0.2)' }}>
                   <TableCell className="text-sm opacity-90">Sábado</TableCell>
                   <TableCell className="text-sm opacity-90">9:00 - 13:00</TableCell>
                 </TableRow>
-                <TableRow className="border-primary-foreground/20">
+                <TableRow style={{ borderColor: 'rgba(240, 237, 231, 0.2)' }}>
                   <TableCell className="text-sm opacity-90">Domingo</TableCell>
                   <TableCell className="text-sm opacity-90">Fechado</TableCell>
                 </TableRow>
@@ -166,7 +171,7 @@ export function Footer() {
           </div>
         </div>
 
-        <Separator className="my-8 bg-primary-foreground/20" />
+        <Separator className="my-8" style={{ backgroundColor: 'rgba(240, 237, 231, 0.2)' }} />
 
         {/* Bottom Bar */}
         <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm opacity-80">

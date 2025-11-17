@@ -8,56 +8,99 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Paleta elegante para estética
-        'charcoal': '#2C2C2C',
-        'pearl-white': '#FAFAFA',
-        'soft-blush': '#F5E6E0',
-        'warm-beige': '#E8DDD4',
-        'rose-gold': '#D4A574',
-        'soft-gray': '#8B8B8B',
-        // Cores do sistema
+        // Paleta atual - TEMA NOVO
+        'bg': '#F7F9FB',         // Base/Porcelain
+        'fg': '#1F2937',         // Graphite
+        'brand': '#99b8bd',      // Teal suave - Botões primários
+        'brand-contrast': '#f4f4f4',
+        'secondary': 'rgb(192, 152, 134)',  // Bege rosado - Botões secundários
+        'accent': '#D4AF37',     // Soft Gold - Destaques
+        'muted': '#EEF2F7',      // Cloud
+        'info': '#0EA5E9',
+        'success': '#16A34A',
+        'warning': '#F59E0B',
+        'danger': '#DC2626',
+        'odontologia': '#99b8bd',  // Teal suave
+        'hof': 'rgb(192, 152, 134)',          // Bege rosado
+        'destaque': '#D4AF37',     // Champagne Gold
+        // Cores do sistema (mapeadas para nova paleta)
         primary: {
-          DEFAULT: '#2C2C2C', // Charcoal Elegant
-          foreground: '#FAFAFA', // Pearl White
+          DEFAULT: '#99b8bd', // Teal suave
+          foreground: '#f4f4f4',
         },
         secondary: {
-          DEFAULT: '#E8DDD4', // Warm Beige
-          foreground: '#2C2C2C', // Charcoal
+          DEFAULT: 'rgb(192, 152, 134)', // Bege rosado
+          foreground: '#f4f4f4',
         },
         accent: {
-          DEFAULT: '#D4A574', // Rose Gold
+          DEFAULT: '#D4AF37', // Soft Gold
           foreground: '#FFFFFF',
         },
         neutral: {
-          DEFAULT: '#FAFAFA', // Pearl White
-          foreground: '#2C2C2C', // Charcoal
+          DEFAULT: '#F7F9FB', // Porcelain
+          foreground: '#1F2937', // Graphite
         },
-        background: '#FAFAFA', // Pearl White
-        foreground: '#2C2C2C', // Charcoal
+        background: '#F7F9FB', // Porcelain
+        foreground: '#1F2937', // Graphite
         muted: {
-          DEFAULT: '#F5E6E0', // Soft Blush
-          foreground: '#2C2C2C', // Charcoal
+          DEFAULT: '#EEF2F7', // Cloud
+          foreground: '#1F2937', // Graphite
         },
-        border: '#8B8B8B', // Soft Gray
-        input: '#8B8B8B', // Soft Gray
-        ring: '#2C2C2C', // Charcoal
+        border: '#E5E7EB',
+        input: '#E5E7EB',
+        ring: '#1E3A5F', // Navy Serenity
         card: {
           DEFAULT: '#FFFFFF',
-          foreground: '#2C2C2C', // Charcoal
+          foreground: '#1F2937', // Graphite
         },
         destructive: {
-          DEFAULT: '#EF4444',
+          DEFAULT: '#DC2626',
           foreground: '#FFFFFF',
         },
+        // TEMA ANTERIOR - BASEADO NA IMAGEM DO HEADER (COMENTADO PARA REVERSÃO)
+        // 'bg': '#FFFFFF',
+        // 'fg': '#2D2D2D',
+        // 'brand': '#5FB3B3',
+        // 'secondary': '#C9A961',
+        // 'accent': '#C9A961',
       },
       fontFamily: {
-        heading: ['Playfair Display', 'serif'],
-        body: ['Inter', 'sans-serif'],
+        heading: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+        body: ['Inter', 'system-ui', 'sans-serif'],
+        display: ['"Cormorant Garamond"', 'serif'], // Hero
+        tangerine: ['Tangerine', 'cursive'],
+        jost: ['Jost', 'sans-serif'],
+      },
+      fontSize: {
+        // Hero
+        'hero': ['clamp(2.5rem, 5vw, 4.5rem)', {
+          lineHeight: '1.1',
+          letterSpacing: '-0.02em',
+          fontWeight: '600',
+        }],
+        // Seções
+        'section': ['clamp(1.75rem, 3vw, 2.5rem)', {
+          lineHeight: '1.2',
+          letterSpacing: '-0.01em',
+          fontWeight: '600',
+        }],
+        // Subtítulos
+        'subtitle': ['clamp(1.125rem, 2vw, 1.5rem)', {
+          lineHeight: '1.4',
+          letterSpacing: '-0.005em',
+          fontWeight: '600',
+        }],
+        // Corpo
+        'body': ['1rem', {
+          lineHeight: '1.6',
+          letterSpacing: '0.01em',
+        }],
       },
       borderRadius: {
         lg: '0.5rem',
         md: '0.375rem',
         sm: '0.25rem',
+        '7': '7px',
       },
     },
   },

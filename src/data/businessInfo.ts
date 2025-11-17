@@ -30,14 +30,14 @@ export const businessInfo: BusinessInfo = {
   name: 'Clínica Dr. Alexandre',
   doctorName: 'Dr. Alexandre',
   address: {
-    street: 'Rua Exemplo, 123',
-    city: 'São Paulo',
-    state: 'SP',
+    street: 'Av. das Américas, 123',
+    city: 'Rio de Janeiro',
+    state: 'RJ',
     zipCode: '01234-567'
   },
   phones: {
-    main: '(11) 3456-7890',
-    whatsapp: '(11) 98765-4321'
+    main: '(21) 98085-6000',
+    whatsapp: '(21) 98085-6000'
   },
   email: 'contato@dralexandre.com.br',
   hours: {
