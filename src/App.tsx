@@ -31,8 +31,12 @@ function AppContent() {
 }
 
 function App() {
+  // Para GitHub Pages: se o repositório não for username.github.io, 
+  // o base path será o nome do repositório
+  const basePath = import.meta.env.BASE_URL || '/'
+  
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={basePath}>
       <AppContent />
     </BrowserRouter>
   )

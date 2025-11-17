@@ -1,73 +1,82 @@
-# React + TypeScript + Vite
+# Site Dr. Alexandre Santos - Odontologia e Estética Facial
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Site institucional do Dr. Alexandre Santos, especialista em Odontologia Avançada e Harmonização Orofacial.
 
-Currently, two official plugins are available:
+## 🚀 Tecnologias
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **React 19** - Biblioteca JavaScript para interfaces
+- **TypeScript** - Tipagem estática
+- **Vite** - Build tool e dev server
+- **Tailwind CSS** - Framework CSS utilitário
+- **Radix UI** - Componentes acessíveis (shadcn/ui)
+- **React Router** - Roteamento SPA
 
-## React Compiler
+## 📦 Instalação
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```bash
+# Instalar dependências
+npm install
 
-## Expanding the ESLint configuration
+# Executar em desenvolvimento
+npm run dev
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+# Build para produção
+npm run build
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+# Preview do build
+npm run preview
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🌐 Deploy no GitHub Pages
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+O projeto está configurado para deploy automático no GitHub Pages através do GitHub Actions.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Configuração Inicial
+
+1. **Habilitar GitHub Pages no repositório:**
+   - Vá em Settings > Pages
+   - Source: selecione "GitHub Actions"
+
+2. **O workflow já está configurado:**
+   - O deploy acontece automaticamente ao fazer push na branch `main` ou `master`
+   - O workflow está em `.github/workflows/deploy.yml`
+
+### URLs
+
+- **Repositório `username.github.io`:** `https://username.github.io`
+- **Repositório com nome customizado:** `https://username.github.io/nome-do-repo`
+
+O projeto detecta automaticamente o base path baseado no nome do repositório.
+
+## 📁 Estrutura do Projeto
+
 ```
+/app
+├── src/
+│   ├── components/     # Componentes React
+│   │   ├── layout/    # Header, Footer, etc
+│   │   ├── sections/  # Seções da homepage
+│   │   └── ui/        # Componentes UI (shadcn/ui)
+│   ├── pages/         # Páginas/rotas
+│   ├── data/          # Dados estáticos (serviços, depoimentos)
+│   └── images/        # Imagens do projeto
+├── public/            # Arquivos estáticos
+└── .github/           # Workflows do GitHub Actions
+```
+
+## 🛠️ Scripts Disponíveis
+
+- `npm run dev` - Inicia servidor de desenvolvimento
+- `npm run build` - Gera build de produção
+- `npm run preview` - Preview do build local
+- `npm run lint` - Executa ESLint
+
+## 📝 Notas de Desenvolvimento
+
+- O projeto usa React Router com `BrowserRouter` configurado para GitHub Pages
+- Imagens devem ser colocadas em `src/images/` e referenciadas com caminhos relativos
+- Componentes UI seguem o padrão shadcn/ui
+
+## 📄 Licença
+
+Este projeto é privado e de uso exclusivo do Dr. Alexandre Santos.
