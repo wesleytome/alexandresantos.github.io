@@ -51,13 +51,28 @@ Isso é configurado automaticamente no workflow do GitHub Actions.
 
 **Este é o erro mais comum!** Significa que o GitHub Pages não está habilitado no repositório.
 
-**Solução:**
+**Soluções (tente na ordem):**
+
+#### Solução 1: Habilitar Manualmente (Recomendado)
 1. Acesse o repositório no GitHub
 2. Vá em **Settings** (Configurações)
 3. No menu lateral, clique em **Pages**
 4. Em **Source**, selecione **GitHub Actions**
 5. Salve as configurações
 6. Execute o workflow novamente (faça um novo push ou execute manualmente em Actions)
+
+#### Solução 2: Verificar Permissões do Workflow
+1. Vá em **Settings** > **Actions** > **General**
+2. Em **Workflow permissions**, selecione **Read and write permissions**
+3. Marque **Allow GitHub Actions to create and approve pull requests**
+4. Salve as configurações
+
+#### Solução 3: O Workflow Tenta Habilitar Automaticamente
+O workflow agora inclui `enablement: true` que tenta habilitar o GitHub Pages automaticamente. Se ainda falhar, use a Solução 1.
+
+#### Solução 4: Verificar Visibilidade do Repositório
+- Repositórios públicos: GitHub Pages funciona normalmente
+- Repositórios privados: Requer GitHub Pro/Team/Enterprise para GitHub Pages
 
 ### O site não carrega após o deploy
 
