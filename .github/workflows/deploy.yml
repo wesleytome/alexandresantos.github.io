@@ -36,14 +36,23 @@ jobs:
         run: |
           REPO_NAME="${{ github.event.repository.name }}"
           OWNER="${{ github.repository_owner }}"
+          # Se o repositório for username.github.io E o owner for o mesmo username, base path é vazio
+          # Caso contrário, usa o nome do repositório como base path
           if [ "$REPO_NAME" = "${OWNER}.github.io" ]; then
-            echo "base_path=" >> $GITHUB_OUTPUT
+            BASE_PATH=""
           else
-            echo "base_path=$REPO_NAME" >> $GITHUB_OUTPUT
+            BASE_PATH="$REPO_NAME"
           fi
+          echo "Repository: $REPO_NAME"
+          echo "Owner: $OWNER"
+          echo "Base path will be: /$BASE_PATH/"
+          echo "base_path=$BASE_PATH" >> $GITHUB_OUTPUT
 
       - name: Build
-        run: npm run build
+        run: |
+          echo "Building with VITE_BASE_PATH=${{ steps.base_path.outputs.base_path }}"
+          npm run build
+          echo "Build completed"
         env:
           VITE_BASE_PATH: ${{ steps.base_path.outputs.base_path }}
 
@@ -53,12 +62,16 @@ jobs:
             echo "❌ dist/index.html not found!"
             exit 1
           fi
+          echo "📄 Checking dist/index.html..."
           if grep -q "/src/main.tsx" dist/index.html; then
             echo "❌ Build failed - index.html still references source files!"
-            cat dist/index.html
+            echo "First 50 lines of index.html:"
+            head -50 dist/index.html
             exit 1
           fi
           echo "✅ Build verified successfully"
+          echo "📦 Assets in dist/assets:"
+          ls -la dist/assets/ 2>/dev/null || echo "No assets directory found"
 
       - name: Setup Pages
         uses: actions/configure-pages@v4

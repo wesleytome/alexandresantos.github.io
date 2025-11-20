@@ -10,7 +10,9 @@ export default defineConfig({
     host: true,
   },
   root: '.',
-  base: process.env.VITE_BASE_PATH ? `/${process.env.VITE_BASE_PATH}/` : '/',
+  base: process.env.VITE_BASE_PATH && process.env.VITE_BASE_PATH !== '' 
+    ? `/${process.env.VITE_BASE_PATH}/` 
+    : '/',
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
