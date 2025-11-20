@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Jost:wght@300;400;500;600;700&family=Tangerine:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
 
 @import "tailwindcss";
 
@@ -16,14 +16,14 @@
      PALETA ATUAL - TEMA NOVO
      ============================================ */
   
-  /* Tokens semânticos base */
-  --color-bg: #F7F9FB;         /* Base/Porcelain */
-  --color-fg: #1F2937;         /* Graphite */
-  --color-brand: #99b8bd;      /* Teal suave - Botões primários */
-  --color-brand-contrast: #f4f4f4;
-  --color-secondary: rgb(192, 152, 134);  /* Bege rosado - Botões secundários */
-  --color-accent: #D4AF37;     /* Soft Gold - Destaques comerciais */
-  --color-muted: #EEF2F7;      /* Cloud */
+  /* Tokens semânticos base - Nova paleta Figma */
+  --color-bg: #FAFAFA;         /* Background claro */
+  --color-fg: #212020;         /* Texto escuro */
+  --color-brand: #7FC2B4;      /* Verde água - Botões primários */
+  --color-brand-contrast: #FFFFFF;
+  --color-secondary: #7FC2B4;  /* Verde água */
+  --color-accent: #7FC2B4;     /* Verde água */
+  --color-muted: #F7F7F7;      /* Background alternativo */
   --color-info: #0EA5E9;
   --color-success: #16A34A;
   --color-warning: #F59E0B;
@@ -100,11 +100,11 @@
   ============================================ */
   
   /* Fontes */
-  --font-heading: 'Cormorant Garamond', serif;
-  --font-body: 'Inter', system-ui, sans-serif;
-  --font-display: 'Cormorant Garamond', serif; /* Hero */
+  --font-heading: 'Manrope', system-ui, sans-serif;
+  --font-body: 'Manrope', system-ui, sans-serif;
+  --font-display: 'Manrope', system-ui, sans-serif; /* Hero */
   --font-tangerine: 'Tangerine', cursive;
-  --font-jost: 'Jost', sans-serif;
+  --font-jost: 'Manrope', system-ui, sans-serif;
   
   /* Border radius */
   --radius-lg: 0.5rem;
@@ -235,32 +235,32 @@
   }
 
   .section-heading-primary {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Manrope', system-ui, sans-serif;
     font-weight: 600;
-    color: #2d4440;
+    color: #212020;
   }
 
   .section-heading-accent {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Manrope', system-ui, sans-serif;
     font-weight: 600;
-    color: #c3994a;
+    color: #7FC2B4;
   }
 
   /* Linha decorativa abaixo do título (opcional) */
   .section-heading-divider {
     @apply w-16 h-0.5 mb-4;
-    background-color: #c3994a;
+    background-color: #7FC2B4;
   }
 
   /* Badge do Hero */
   .badge-hero {
-    color: #2e3e35;
+    color: #212020;
     /* border: 1px solid var(--color-accent); */
   }
 
   @supports (color: color-mix(in lab, red, red)) {
     .badge-hero {
-      background-color: color-mix(in srgb, #2e3e35 10%, transparent);
+      background-color: color-mix(in srgb, #212020 10%, transparent);
     }
   }
 
@@ -278,7 +278,7 @@
   /* Especialização */
   .hero-specialization {
     font-size: 0.9em;
-    color: #c3994a;
+    color: #7FC2B4;
   }
 
   /* Título principal do Hero */
@@ -289,21 +289,21 @@
 
   /* Textos do Hero */
   .hero-title {
-    color: #4e6759;
+    color: #212020;
   }
 
   .hero-subtitle {
     font-size: 1.3em;
-    font-family: 'Inter', system-ui, sans-serif;
+    font-family: 'Manrope', system-ui, sans-serif;
     font-weight: 400;
   }
 
   /* Botão Estética Facial do Hero */
   .button-estetica-hero {
     border-radius: 7px;
-    background-color: rgb(224, 215, 197);
-    color: #c1a280;
-    border: none;
+    background-color: #F7F7F7;
+    color: #212020;
+    border: 1px solid #7FC2B4;
     transition: all 0.2s;
   }
 
@@ -313,7 +313,7 @@
 
   /* Forma de escudo para o logo */
   .logo-shield {
-    background-color: rgb(52, 54, 58);
+    background-color: #212020;
     width: 57%;
     height: 116%;
     margin-left: 49px;
@@ -401,8 +401,8 @@
   
   /* Botão primário */
   .btn-primary {
-    background-color: #9bbda4;
-    color: #f5f3f0;
+    background-color: #7FC2B4;
+    color: #FFFFFF;
     border-radius: 7px;
     transition: filter 0.2s;
   }
@@ -413,8 +413,8 @@
 
   /* Botão secundário */
   .btn-secondary {
-    background-color: rgb(192, 152, 134);
-    color: #f4f4f4;
+    background-color: #7FC2B4;
+    color: #FFFFFF;
     border-radius: 7px;
     transition: all 0.2s;
   }
@@ -461,5 +461,201 @@
     background-color: color-mix(in srgb, var(--color-accent) 10%, transparent);
     color: var(--color-accent);
     border: 1px solid var(--color-accent);
+  }
+
+  /* ============================================
+     PADRÃO DE TÍTULOS DE SEÇÃO
+     ============================================ */
+  
+  /* Container do header de seção */
+  .section-header {
+    @apply text-left mb-12;
+  }
+  
+  /* Texto pequeno acima do título */
+  .section-label {
+    color: #212020;
+    font-size: 15px;
+    font-weight: normal;
+  }
+  
+  /* Título principal da seção */
+  .section-title {
+    @apply font-bold mb-2;
+    color: #212020;
+    font-size: 45px;
+    line-height: 1.2;
+  }
+  
+  /* Linha divisória abaixo do título */
+  .section-divider {
+    @apply w-16 h-1 mb-4;
+    background-color: #7FC2B4;
+  }
+  
+  /* Descrição da seção */
+  .section-description {
+    @apply max-w-2xl;
+    color: #212020;
+    font-size: 17px;
+    line-height: 1.6;
+  }
+
+  /* ============================================
+     BACKGROUNDS DE SEÇÃO
+     ============================================ */
+  
+  .bg-section-light {
+    background-color: #FAFAFA;
+  }
+  
+  .bg-section-muted {
+    background-color: #F7F7F7;
+  }
+
+  /* ============================================
+     CORES DE TEXTO
+     ============================================ */
+  
+  .text-primary {
+    color: #212020;
+  }
+  
+  .text-brand {
+    color: #7FC2B4;
+  }
+  
+  .text-light {
+    color: #FAFAFA;
+  }
+
+  /* ============================================
+     TAMANHOS DE FONTE PADRONIZADOS
+     ============================================ */
+  
+  .text-label {
+    font-size: 15px;
+  }
+  
+  .text-body-large {
+    font-size: 17px;
+    line-height: 1.6;
+  }
+  
+  .text-heading-large {
+    font-size: 45px;
+    line-height: 1.2;
+  }
+
+  /* ============================================
+     CARDS COM HOVER
+     ============================================ */
+  
+  .card-hover {
+    @apply transition-all duration-300;
+  }
+  
+  .card-hover:hover {
+    background-color: #212020;
+    transform: translateY(-4px);
+  }
+  
+  .card-hover:hover .card-text {
+    color: #FAFAFA !important;
+  }
+  
+  .card-text {
+    color: #212020;
+    @apply transition-colors duration-300;
+  }
+
+  /* ============================================
+     ÍCONES E ELEMENTOS DECORATIVOS
+     ============================================ */
+  
+  .icon-brand {
+    color: #7FC2B4;
+  }
+  
+  .divider-brand {
+    background-color: #7FC2B4;
+  }
+
+  /* ============================================
+     BOTÕES DE NAVEGAÇÃO
+     ============================================ */
+  
+  .btn-nav {
+    background-color: #7FC2B4;
+    @apply transition-opacity hover:opacity-80;
+  }
+
+  /* ============================================
+     BACKGROUNDS ESCUROS
+     ============================================ */
+  
+  .bg-dark {
+    background-color: #212020;
+  }
+
+  /* ============================================
+     SCROLLBAR
+     ============================================ */
+  
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* ============================================
+     ACCORDION FAQ
+     ============================================ */
+  
+  [data-slot="accordion-item"] {
+    border-bottom-color: #E5E7EB;
+  }
+  
+  [data-slot="accordion-trigger"] {
+    color: #212020;
+  }
+  
+  [data-slot="accordion-trigger"]:hover {
+    color: #7FC2B4;
+  }
+  
+  [data-slot="accordion-trigger"] svg {
+    color: #7FC2B4;
+  }
+  
+  [data-slot="accordion-content"] {
+    color: #212020;
+  }
+
+  /* ============================================
+     GRADIENTES ENTRE SEÇÕES
+     ============================================ */
+  
+  /* Gradiente de cinza claro para branco */
+  .bg-gradient-muted-to-light {
+    background: linear-gradient(to bottom, #F7F7F7 0%, #FAFAFA 100%);
+  }
+  
+  /* Gradiente de branco para cinza claro */
+  .bg-gradient-light-to-muted {
+    background: linear-gradient(to bottom, #FAFAFA 0%, #F7F7F7 100%);
+  }
+  
+  /* Gradiente de cinza claro para branco (mais suave) */
+  .bg-gradient-muted-to-light-smooth {
+    background: linear-gradient(to bottom, #F7F7F7 0%, #F8F8F8 50%, #FAFAFA 100%);
+  }
+  
+  /* Gradiente de branco para cinza claro (mais suave) */
+  .bg-gradient-light-to-muted-smooth {
+    background: linear-gradient(to bottom, #FAFAFA 0%, #F8F8F8 50%, #F7F7F7 100%);
   }
 }

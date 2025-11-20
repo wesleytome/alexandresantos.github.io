@@ -1,7 +1,7 @@
 import { SEO } from '@/components/SEO'
-import { Hero } from '@/components/sections/Hero'
-import { AboutAlexandre } from '@/components/sections/AboutAlexandre'
+import { HeroWithTransform } from '@/components/sections/HeroWithTransform'
 import { AlexandreQuote } from '@/components/sections/AlexandreQuote'
+import { StatisticsSection } from '@/components/sections/StatisticsSection'
 import { ServicesSection } from '@/components/sections/ServicesSection'
 import { PatientJourney } from '@/components/sections/PatientJourney'
 import { BeforeAfterSection } from '@/components/sections/BeforeAfterSection'
@@ -26,17 +26,17 @@ export function Home() {
       />
       <TopSection>
         <Header transparent />
-        <Hero />
+        <HeroWithTransform />
       </TopSection>
-      <AboutAlexandre />
       <AlexandreQuote />
+      <StatisticsSection />
       <ServicesSection />
-      <PatientJourney />
       <BeforeAfterSection />
       <ClinicDifferentials />
-      <FAQSection />
+      <PatientJourney />
       <Testimonials />
-      <FinalCTA />
+      <FAQSection />
+      {/* <FinalCTA /> */}
       <LocationMap />
     </>
   )

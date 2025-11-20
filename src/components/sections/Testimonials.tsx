@@ -1,142 +1,199 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-  type CarouselApi,
-} from '@/components/ui/carousel'
-import { Button } from '@/components/ui/button'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { testimonials } from '@/data/testimonials'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 
 export function Testimonials() {
-  const [api, setApi] = useState<CarouselApi>()
-  const [current, setCurrent] = useState(0)
+  const [currentIndex, setCurrentIndex] = useState(0)
 
-  useEffect(() => {
-    if (!api) return
+  const nextTestimonial = () => {
+    setCurrentIndex((prev) => (prev + 1) % testimonials.length)
+  }
 
-    setCurrent(api.selectedScrollSnap())
+  const prevTestimonial = () => {
+    setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length)
+  }
 
-    api.on('select', () => {
-      setCurrent(api.selectedScrollSnap())
-    })
-  }, [api])
+  const goToTestimonial = (index: number) => {
+    setCurrentIndex(index)
+  }
+
+  const currentTestimonial = testimonials[currentIndex]
 
   return (
     <section 
-      className="py-20 relative overflow-hidden bg-gradient-to-b from-white to-amber-50"
+      className="py-24 bg-gradient-muted-to-light"
+      // Estado anterior: bg-section-light → bg-section-muted (para reverter se necessário)
     >
-      {/* Elemento decorativo sutil no canto inferior direito */}
-      <div className="absolute bottom-0 right-0 w-64 h-64 opacity-5 pointer-events-none">
-        <div className="text-9xl text-foreground/10">D</div>
-      </div>
+      <div className="container mx-auto px-4 md:px-20">
+        {/* Header - Alinhado à esquerda */}
+        <div className="section-header">
+          <p className="section-label">
+            Uma boa palavra vale muito
+          </p>
+          <h2 className="section-title">
+            Depoimentos de clientes
+          </h2>
+          <div className="section-divider"></div>
+          <p className="section-description">
+            Sempre é o boca a boca que traz o melhor conselho. Aqui estão alguns depoimentos dos nossos clientes.
+          </p>
+        </div>
 
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-4xl mx-auto">
-          {/* Header alinhado à esquerda */}
-          <div className="max-w-3xl mb-12">
-            <p className="text-sm text-foreground/70 mb-3">Uma boa palavra vale muito</p>
-            <h2 className="section-heading mb-3">
-              <span className="section-heading-primary">Depoimentos de</span>{' '}
-              <span className="section-heading-accent">clientes</span>
-            </h2>
-            {/* Linha horizontal curta embaixo de "Depoimentos de" */}
-            <div className="section-heading-divider"></div>
-            <p className="text-base text-foreground/80 leading-relaxed">
-              Sempre é o boca a boca que traz o melhor conselho. Aqui estão alguns depoimentos dos nossos clientes.
-            </p>
-          </div>
+        {/* Área de depoimento centralizada */}
+        <div className="relative max-w-4xl mx-auto">
+          <div className="flex flex-col items-center text-center px-8 md:px-16 py-12">
+            {/* Foto do depoente */}
+            {currentTestimonial.avatar && (
+              <div className="mb-6">
+                <Avatar className="h-24 w-24">
+                  <AvatarImage src={currentTestimonial.avatar} alt={currentTestimonial.name} />
+                  <AvatarFallback 
+                    className="text-xl"
+                    style={{ 
+                      backgroundColor: '#F7F7F7',
+                      color: '#212020'
+                    }}
+                  >
+                    {currentTestimonial.name
+                      .split(' ')
+                      .map((n) => n[0])
+                      .join('')
+                      .toUpperCase()}
+                  </AvatarFallback>
+                </Avatar>
+              </div>
+            )}
 
-          {/* Carrossel com um depoimento por vez */}
-          <div className="relative">
-            <Carousel
-              setApi={setApi}
-              opts={{
-                align: 'center',
-                loop: true,
+            {/* Nome em teal */}
+            <p 
+              className="mb-8"
+              style={{ 
+                color: '#7FC2B4',
+                fontSize: '18px',
+                fontWeight: 'normal'
               }}
-              className="w-full"
             >
-              <CarouselContent>
-                {testimonials.map((testimonial) => (
-                  <CarouselItem key={testimonial.id} className="basis-full">
-                    <div className="flex flex-col items-center text-center px-8 md:px-16 py-12">
-                      {/* Foto opcional do depoente */}
-                      {testimonial.avatar && (
-                        <div className="mb-4">
-                          <Avatar className="h-24 w-24 border-2 border-sage-green/20">
-                            <AvatarImage src={testimonial.avatar} alt={testimonial.name} />
-                            <AvatarFallback className="bg-natural-beige text-foreground text-xl">
-                              {testimonial.name
-                                .split(' ')
-                                .map((n) => n[0])
-                                .join('')
-                                .toUpperCase()}
-                            </AvatarFallback>
-                          </Avatar>
-                        </div>
-                      )}
+              - {currentTestimonial.name} -
+            </p>
 
-                      {/* Nome logo abaixo da foto */}
-                          <p className="text-sm md:text-base text-foreground/60 italic mb-8">
-                        - {testimonial.name} -
-                      </p>
+            {/* Citação */}
+            <blockquote 
+              className="max-w-3xl leading-relaxed"
+              style={{ 
+                color: '#212020',
+                fontSize: '20px',
+                lineHeight: '1.6'
+              }}
+            >
+              "{currentTestimonial.text}"
+            </blockquote>
+          </div>
 
-                      {/* Citação em itálico */}
-                          <blockquote className="text-lg md:text-xl lg:text-2xl text-foreground/80 italic leading-relaxed max-w-3xl px-4">
-                        "{testimonial.text}"
-                      </blockquote>
-                    </div>
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
+          {/* Seta esquerda */}
+          <button
+            onClick={prevTestimonial}
+            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-14 z-20 w-12 h-12 flex items-center justify-center transition-opacity hover:opacity-80"
+            className="btn-nav"
+            aria-label="Depoimento anterior"
+          >
+            <ChevronLeft className="h-6 w-6 text-white" />
+          </button>
 
-              {/* Setas de navegação */}
-              <CarouselPrevious className="left-0 md:-left-16 bg-transparent border-0 hover:bg-transparent shadow-none">
-                <ChevronLeft className="h-8 w-8 text-foreground/80 hover:text-foreground" />
-                <span className="sr-only">Depoimento anterior</span>
-              </CarouselPrevious>
-              <CarouselNext className="right-0 md:-right-16 bg-transparent border-0 hover:bg-transparent shadow-none">
-                <ChevronRight className="h-8 w-8 text-foreground/80 hover:text-foreground" />
-                <span className="sr-only">Próximo depoimento</span>
-              </CarouselNext>
-            </Carousel>
+          {/* Seta direita */}
+          <button
+            onClick={nextTestimonial}
+            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-14 z-20 w-12 h-12 flex items-center justify-center transition-opacity hover:opacity-80"
+            className="btn-nav"
+            aria-label="Próximo depoimento"
+          >
+            <ChevronRight className="h-6 w-6 text-white" />
+          </button>
 
-            {/* Pontos de paginação */}
-            <div className="flex justify-center gap-2 mt-8">
-              {testimonials.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => api?.scrollTo(index)}
-                  className={`h-2 w-2 rounded-full transition-all ${
-                    index === current
-                      ? 'bg-foreground w-8'
-                      : 'bg-foreground/20 hover:bg-foreground/40'
-                  }`}
-                  aria-label={`Ir para depoimento ${index + 1}`}
-                />
-              ))}
+          {/* Pontos de paginação */}
+          <div className="flex justify-center items-center gap-2 mt-8">
+            {testimonials.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => goToTestimonial(index)}
+                className="transition-all"
+                style={{
+                  backgroundColor: index === currentIndex ? '#212020' : '#D1D5DB',
+                  width: index === currentIndex ? '24px' : '8px',
+                  height: index === currentIndex ? '8px' : '8px',
+                  borderRadius: index === currentIndex ? '4px' : '50%'
+                }}
+                aria-label={`Ir para depoimento ${index + 1}`}
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* Botão CTA - Estilo do Hero */}
+        <div className="text-center mt-12">
+          <Link
+            to="/depoimentos"
+            className="relative inline-flex items-center justify-between transition-all hover:opacity-90 overflow-hidden mb-0"
+            style={{ 
+              backgroundColor: '#212020',
+              color: '#FFFFFF',
+              width: '300px',
+              height: '125px',
+              padding: '0 24px',
+              borderRadius: '8px'
+            }}
+          >
+            <div className="flex flex-col">
+              <span style={{ 
+                fontSize: '36px', 
+                lineHeight: '38px',
+                fontWeight: 400
+              }}>
+                Ver todos os
+              </span>
+              <span style={{ 
+                fontSize: '36px', 
+                lineHeight: '38px',
+                fontWeight: 400
+              }}>
+                Depoimentos
+              </span>
             </div>
-          </div>
-
-          {/* Botão CTA centralizado */}
-          <div className="text-center mt-12">
-            <Button 
-              size="lg" 
-              asChild
-              variant="outline"
-              className="border-foreground/20 hover:bg-foreground/5 text-foreground"
+            
+            {/* SVG Lines - Canto inferior direito */}
+            <svg 
+              width="60" 
+              height="60" 
+              viewBox="0 0 60 60" 
+              fill="none" 
+              className="absolute"
+              style={{ 
+                pointerEvents: 'none',
+                bottom: '15px',
+                right: '15px'
+              }}
             >
-              <Link to="/depoimentos">
-                Ver Todos os Depoimentos
-              </Link>
-            </Button>
-          </div>
+              {/* Linha horizontal inferior */}
+              <line 
+                x1="0" 
+                y1="60" 
+                x2="60" 
+                y2="60" 
+                stroke="#FFFFFF" 
+                strokeWidth="1"
+              />
+              {/* Linha vertical direita */}
+              <line 
+                x1="60" 
+                y1="0" 
+                x2="60" 
+                y2="60" 
+                stroke="#FFFFFF" 
+                strokeWidth="1"
+              />
+            </svg>
+          </Link>
         </div>
       </div>
     </section>

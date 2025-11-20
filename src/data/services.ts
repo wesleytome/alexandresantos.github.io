@@ -1,3 +1,7 @@
+import implanteImage from '@/images/services/implante-dentario.jpg'
+import clareamentoImage from '@/images/services/clareamento-dental.jpg'
+import lentesImage from '@/images/services/lentes-de-contato-dental.jpg'
+
 export interface Service {
   id: string
   category: 'odontologia' | 'estetica'
@@ -26,7 +30,7 @@ export const services: Service[] = [
       'Preserva a estrutura óssea facial',
       'Não compromete dentes adjacentes'
     ],
-    image: '/src/images/services/implante-dentario.jpg',
+    image: implanteImage,
     icon: 'tooth',
     price: 'A partir de R$ 2.500',
     duration: '45-60 minutos',
@@ -45,7 +49,7 @@ export const services: Service[] = [
       'Procedimento indolor',
       'Acompanhamento profissional'
     ],
-    image: '/src/images/services/clareamento-dental.jpg',
+    image: clareamentoImage,
     icon: 'sparkles',
     price: 'A partir de R$ 800',
     duration: '60-90 minutos',
@@ -64,11 +68,68 @@ export const services: Service[] = [
       'Procedimento minimamente invasivo',
       'Personalização completa'
     ],
-    image: '/src/images/services/lentes-de-contato-dental.jpg',
+    image: lentesImage,
     icon: 'smile',
     price: 'A partir de R$ 1.500',
     duration: '2-3 sessões',
     recovery: '3-7 dias'
+  },
+  {
+    id: 'ortodontia',
+    category: 'odontologia',
+    title: 'Ortodontia',
+    shortDescription: 'Alinhamento dental com aparelhos modernos e discretos para um sorriso perfeito.',
+    fullDescription: 'Tratamento ortodôntico completo com aparelhos fixos, móveis e alinhadores transparentes. Corrigimos problemas de alinhamento, mordida e espaçamento dental.',
+    benefits: [
+      'Aparelhos modernos e discretos',
+      'Alinhadores transparentes disponíveis',
+      'Correção de mordida e alinhamento',
+      'Resultados duradouros',
+      'Acompanhamento personalizado'
+    ],
+    image: 'https://images.unsplash.com/photo-1606811971618-4486d14f3f99?w=800&h=600&fit=crop',
+    icon: 'tooth',
+    price: 'A partir de R$ 1.800',
+    duration: '12-24 meses',
+    recovery: 'Contínuo'
+  },
+  {
+    id: 'protese-dentaria',
+    category: 'odontologia',
+    title: 'Prótese Dentária',
+    shortDescription: 'Reabilitação completa com próteses fixas e móveis de alta qualidade.',
+    fullDescription: 'Fabricamos próteses dentárias personalizadas, tanto fixas quanto móveis, utilizando materiais de última geração para máxima durabilidade e estética.',
+    benefits: [
+      'Próteses fixas e móveis',
+      'Materiais de alta qualidade',
+      'Estética natural',
+      'Conforto e funcionalidade',
+      'Durabilidade superior'
+    ],
+    image: 'https://images.unsplash.com/photo-1606811971618-4486d14f3f99?w=800&h=600&fit=crop',
+    icon: 'tooth',
+    price: 'A partir de R$ 2.000',
+    duration: '2-4 sessões',
+    recovery: '7-14 dias'
+  },
+  {
+    id: 'endodontia',
+    category: 'odontologia',
+    title: 'Endodontia',
+    shortDescription: 'Tratamento de canal com técnicas modernas e indolores para preservar seus dentes.',
+    fullDescription: 'Tratamento endodôntico (canal) realizado com técnicas modernas, equipamentos de última geração e anestesia eficaz, garantindo conforto e preservação do dente.',
+    benefits: [
+      'Técnicas modernas e indolores',
+      'Preservação do dente natural',
+      'Equipamentos de última geração',
+      'Anestesia eficaz',
+      'Alta taxa de sucesso'
+    ],
+    image: 'https://images.unsplash.com/photo-1606811971618-4486d14f3f99?w=800&h=600&fit=crop',
+    icon: 'tooth',
+    price: 'A partir de R$ 800',
+    duration: '1-2 sessões',
+    recovery: '2-3 dias'
   },
   {
     id: 'harmonizacao-orofacial',

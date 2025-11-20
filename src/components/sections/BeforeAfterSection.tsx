@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { BeforeAfterSlider } from './BeforeAfterSlider'
-import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import { ChevronLeft, ChevronRight } from 'lucide-react'
 
 export interface BeforeAfterCase {
   id: string
@@ -71,84 +71,103 @@ const beforeAfterCases: BeforeAfterCase[] = [
 ]
 
 export function BeforeAfterSection() {
-  const [activeFilter, setActiveFilter] = useState<string>('todos')
+  const [currentIndex, setCurrentIndex] = useState(0)
 
-  const filteredCases =
-    activeFilter === 'todos'
-      ? beforeAfterCases
-      : beforeAfterCases.filter((case_) => case_.category === activeFilter)
+  const nextCase = () => {
+    setCurrentIndex((prev) => (prev + 1) % beforeAfterCases.length)
+  }
+
+  const prevCase = () => {
+    setCurrentIndex((prev) => (prev - 1 + beforeAfterCases.length) % beforeAfterCases.length)
+  }
+
+  const currentCase = beforeAfterCases[currentIndex]
+
+  const getCategoryLabel = (category: string) => {
+    switch (category) {
+      case 'odontologia':
+        return 'Odontologia'
+      case 'estetica':
+        return 'Estética Facial'
+      case 'combinados':
+        return 'Combinados'
+      default:
+        return 'Odontologia'
+    }
+  }
 
   return (
     <section 
-      className="py-20 bg-gradient-to-b from-amber-50 to-white"
+      className="py-24 bg-gradient-light-to-muted"
+      // Estado anterior: bg-section-light (para reverter se necessário)
     >
-      <div className="container mx-auto px-4">
-        {/* Header */}
-        <div className="text-center mb-12">
-          <h2 className="section-heading mb-4">
-            <span className="section-heading-primary">Antes e</span>{' '}
-            <span className="section-heading-accent">Depois</span>
+      <div className="container mx-auto px-4 md:px-20">
+        {/* Header - Alinhado à esquerda */}
+        <div className="section-header">
+          <p className="section-label">
+            Antes e Depois
+          </p>
+          <h2 className="section-title">
+            Resultados
           </h2>
-          <p className="text-lg text-foreground/80 max-w-2xl mx-auto">
+          <div className="section-divider"></div>
+          <p className="section-description">
             Resultados reais de nossos tratamentos. Veja a transformação de nossos pacientes.
           </p>
         </div>
 
-        {/* Filtros */}
-        <div className="flex justify-center mb-12">
-          <Tabs value={activeFilter} onValueChange={setActiveFilter} className="w-auto">
-            <TabsList className="bg-muted/50">
-              <TabsTrigger
-                value="todos"
-                className="data-[state=active]:bg-white data-[state=active]:text-foreground"
-              >
-                Todos
-              </TabsTrigger>
-              <TabsTrigger
-                value="odontologia"
-                className="data-[state=active]:bg-white data-[state=active]:text-foreground"
-              >
-                Odontologia
-              </TabsTrigger>
-              <TabsTrigger
-                value="estetica"
-                className="data-[state=active]:bg-white data-[state=active]:text-foreground"
-              >
-                Estética Facial
-              </TabsTrigger>
-              <TabsTrigger
-                value="combinados"
-                className="data-[state=active]:bg-white data-[state=active]:text-foreground"
-              >
-                Combinados
-              </TabsTrigger>
-            </TabsList>
-          </Tabs>
-        </div>
+        {/* Seção de imagem grande com navegação */}
+        <div className="relative max-w-5xl mx-auto">
+          {/* Seta esquerda */}
+          <button
+            onClick={prevCase}
+            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-14 z-20 w-12 h-12 flex items-center justify-center transition-opacity hover:opacity-80"
+            style={{ backgroundColor: '#7FC2B4' }}
+            aria-label="Caso anterior"
+          >
+            <ChevronLeft className="h-6 w-6 text-white" />
+          </button>
 
-        {/* Grid de casos */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredCases.map((case_) => (
-            <div key={case_.id} className="group">
+          {/* Container da imagem */}
+          <div 
+            className="relative rounded-t-2xl overflow-hidden"
+            className="bg-section-light"
+          >
+            {/* Label no topo */}
+            <div 
+              className="px-6 py-4"
+              style={{ backgroundColor: '#7FC2B4' }}
+            >
+              <span 
+                className="text-lg font-normal"
+                style={{ color: '#FFFFFF' }}
+              >
+                {getCategoryLabel(currentCase.category)}
+              </span>
+            </div>
+
+            {/* Slider de antes/depois */}
+            <div className="relative">
               <BeforeAfterSlider
-                beforeImage={case_.beforeImage}
-                afterImage={case_.afterImage}
-                treatmentType={case_.treatmentType}
-                treatmentTime={case_.treatmentTime}
-                patientAge={case_.patientAge}
+                beforeImage={currentCase.beforeImage}
+                afterImage={currentCase.afterImage}
+                treatmentType={currentCase.treatmentType}
+                treatmentTime={currentCase.treatmentTime}
+                patientAge={currentCase.patientAge}
               />
             </div>
-          ))}
-        </div>
-
-        {/* Mensagem quando não há casos */}
-        {filteredCases.length === 0 && (
-          <div className="text-center py-12">
-            <p className="text-foreground/60">
-              Nenhum caso encontrado nesta categoria.
-            </p>
           </div>
-        )}
+
+          {/* Seta direita */}
+          <button
+            onClick={nextCase}
+            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-14 z-20 w-12 h-12 flex items-center justify-center transition-opacity hover:opacity-80"
+            style={{ backgroundColor: '#7FC2B4' }}
+            aria-label="Próximo caso"
+          >
+            <ChevronRight className="h-6 w-6 text-white" />
+          </button>
+        </div>
       </div>
     </section>
   )

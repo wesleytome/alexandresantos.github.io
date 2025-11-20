@@ -69,16 +69,20 @@ const geralFAQs: FAQItem[] = [
 export function FAQSection() {
   return (
     <section 
-      className="py-20 bg-gradient-to-b from-amber-50 to-white"
+      className="py-24 bg-gradient-light-to-muted"
+      // Estado anterior: bg-section-light (para reverter se necessário)
     >
-      <div className="container mx-auto px-4">
-        {/* Header */}
-        <div className="text-center mb-12">
-          <h2 className="section-heading mb-4">
-            <span className="section-heading-primary">Perguntas</span>{' '}
-            <span className="section-heading-accent">Frequentes</span>
+      <div className="container mx-auto px-4 md:px-20">
+        {/* Header - Alinhado à esquerda */}
+        <div className="section-header">
+          <p className="section-label">
+            Tire suas dúvidas
+          </p>
+          <h2 className="section-title">
+            Perguntas Frequentes
           </h2>
-          <p className="text-lg text-foreground/80 max-w-2xl mx-auto">
+          <div className="section-divider"></div>
+          <p className="section-description">
             Tire suas dúvidas sobre nossos tratamentos e procedimentos
           </p>
         </div>
@@ -86,22 +90,22 @@ export function FAQSection() {
         {/* Tabs com Accordion */}
         <div className="max-w-4xl mx-auto">
           <Tabs defaultValue="odontologia" className="w-full">
-            <TabsList className="mb-8 bg-muted/50 w-full justify-start">
+            <TabsList className="services-tabs-list mb-8">
               <TabsTrigger
                 value="odontologia"
-                className="data-[state=active]:bg-white data-[state=active]:text-foreground"
+                className="services-tabs-trigger"
               >
                 Odontologia
               </TabsTrigger>
               <TabsTrigger
                 value="estetica"
-                className="data-[state=active]:bg-white data-[state=active]:text-foreground"
+                className="services-tabs-trigger"
               >
                 Estética Facial
               </TabsTrigger>
               <TabsTrigger
                 value="geral"
-                className="data-[state=active]:bg-white data-[state=active]:text-foreground"
+                className="services-tabs-trigger"
               >
                 Geral
               </TabsTrigger>
@@ -111,11 +115,11 @@ export function FAQSection() {
             <TabsContent value="odontologia" className="mt-0">
               <Accordion type="single" collapsible className="w-full">
                 {odontologiaFAQs.map((faq) => (
-                  <AccordionItem key={faq.id} value={faq.id}>
-                    <AccordionTrigger className="text-left font-semibold">
+                  <AccordionItem key={faq.id} value={faq.id} className="border-border">
+                    <AccordionTrigger className="text-left font-semibold text-primary hover:text-brand">
                       {faq.question}
                     </AccordionTrigger>
-                    <AccordionContent className="text-foreground/80 leading-relaxed">
+                    <AccordionContent className="text-primary leading-relaxed">
                       {faq.answer}
                     </AccordionContent>
                   </AccordionItem>
@@ -127,11 +131,11 @@ export function FAQSection() {
             <TabsContent value="estetica" className="mt-0">
               <Accordion type="single" collapsible className="w-full">
                 {esteticaFAQs.map((faq) => (
-                  <AccordionItem key={faq.id} value={faq.id}>
-                    <AccordionTrigger className="text-left font-semibold">
+                  <AccordionItem key={faq.id} value={faq.id} className="border-border">
+                    <AccordionTrigger className="text-left font-semibold text-primary hover:text-brand">
                       {faq.question}
                     </AccordionTrigger>
-                    <AccordionContent className="text-foreground/80 leading-relaxed">
+                    <AccordionContent className="text-primary leading-relaxed">
                       {faq.answer}
                     </AccordionContent>
                   </AccordionItem>
@@ -143,11 +147,11 @@ export function FAQSection() {
             <TabsContent value="geral" className="mt-0">
               <Accordion type="single" collapsible className="w-full">
                 {geralFAQs.map((faq) => (
-                  <AccordionItem key={faq.id} value={faq.id}>
-                    <AccordionTrigger className="text-left font-semibold">
+                  <AccordionItem key={faq.id} value={faq.id} className="border-border">
+                    <AccordionTrigger className="text-left font-semibold text-primary hover:text-brand">
                       {faq.question}
                     </AccordionTrigger>
-                    <AccordionContent className="text-foreground/80 leading-relaxed">
+                    <AccordionContent className="text-primary leading-relaxed">
                       {faq.answer}
                     </AccordionContent>
                   </AccordionItem>

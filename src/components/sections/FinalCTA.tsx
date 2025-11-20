@@ -10,33 +10,33 @@ export function FinalCTA() {
 
   return (
     <section 
-      className="py-20 relative overflow-hidden"
+      className="py-24 relative overflow-hidden"
       style={{
-        background: 'linear-gradient(to bottom right, #99b8bd, rgb(192, 152, 134))'
+        backgroundColor: '#212020'
       }}
     >
       {/* Elementos decorativos */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-0 right-0 w-96 h-96 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 opacity-10" style={{ backgroundColor: '#99b8bd' }}></div>
-        <div className="absolute bottom-0 left-0 w-96 h-96 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2 opacity-10" style={{ backgroundColor: 'rgb(192, 152, 134)' }}></div>
+        <div className="absolute top-0 right-0 w-96 h-96 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 opacity-10" style={{ backgroundColor: '#7FC2B4' }}></div>
+        <div className="absolute bottom-0 left-0 w-96 h-96 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2 opacity-10" style={{ backgroundColor: '#7FC2B4' }}></div>
       </div>
 
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="container mx-auto px-4 md:px-20 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
           {/* Badge */}
-          <div className="mb-6">
-            <Badge className="badge-destaque px-4 py-2 text-sm font-medium">
+          <div className="mb-8">
+            <Badge className="badge-destaque px-6 py-3 text-base font-medium">
               Primeira consulta com 50% de desconto
             </Badge>
           </div>
 
           {/* Título */}
-          <h2 className="text-hero font-display mb-6" style={{ color: '#f5f3f0' }}>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6" style={{ color: '#FAFAFA' }}>
             Pronto para Transformar seu Sorriso e Realçar sua Beleza?
           </h2>
 
           {/* Subtítulo */}
-          <p className="text-xl md:text-2xl mb-10 max-w-2xl mx-auto" style={{ color: '#f5f3f0', opacity: 0.9 }}>
+          <p className="text-xl md:text-2xl mb-12 max-w-2xl mx-auto" style={{ color: '#FAFAFA', opacity: 0.9 }}>
             Agende sua avaliação sem compromisso
           </p>
 

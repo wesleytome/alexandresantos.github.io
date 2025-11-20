@@ -6,7 +6,7 @@ interface TopSectionProps {
 
 export function TopSection({ children }: TopSectionProps) {
   return (
-    <section className="w-full gradient-top-section">
+    <section className="w-full" style={{ backgroundColor: '#FAFAFA' }}>
       {children}
     </section>
   )

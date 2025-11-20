@@ -8,50 +8,50 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Paleta atual - TEMA NOVO
-        'bg': '#F7F9FB',         // Base/Porcelain
-        'fg': '#1F2937',         // Graphite
-        'brand': '#99b8bd',      // Teal suave - Botões primários
-        'brand-contrast': '#f4f4f4',
-        'secondary': 'rgb(192, 152, 134)',  // Bege rosado - Botões secundários
-        'accent': '#D4AF37',     // Soft Gold - Destaques
-        'muted': '#EEF2F7',      // Cloud
+        // Nova paleta conforme layout Figma
+        'bg': '#FAFAFA',         // Background claro
+        'fg': '#212020',         // Texto escuro
+        'brand': '#7FC2B4',      // Verde água - Botões primários
+        'brand-contrast': '#FFFFFF',
+        'secondary': '#7FC2B4',  // Mesma cor do brand
+        'accent': '#7FC2B4',     // Verde água
+        'muted': '#F7F7F7',      // Background alternativo
         'info': '#0EA5E9',
         'success': '#16A34A',
         'warning': '#F59E0B',
         'danger': '#DC2626',
-        'odontologia': '#99b8bd',  // Teal suave
-        'hof': 'rgb(192, 152, 134)',          // Bege rosado
-        'destaque': '#D4AF37',     // Champagne Gold
+        'odontologia': '#7FC2B4',  // Verde água
+        'hof': '#7FC2B4',          // Verde água
+        'destaque': '#7FC2B4',     // Verde água
         // Cores do sistema (mapeadas para nova paleta)
         primary: {
-          DEFAULT: '#99b8bd', // Teal suave
-          foreground: '#f4f4f4',
+          DEFAULT: '#7FC2B4', // Verde água
+          foreground: '#FFFFFF',
         },
         secondary: {
-          DEFAULT: 'rgb(192, 152, 134)', // Bege rosado
-          foreground: '#f4f4f4',
+          DEFAULT: '#7FC2B4', // Verde água
+          foreground: '#FFFFFF',
         },
         accent: {
-          DEFAULT: '#D4AF37', // Soft Gold
+          DEFAULT: '#7FC2B4', // Verde água
           foreground: '#FFFFFF',
         },
         neutral: {
-          DEFAULT: '#F7F9FB', // Porcelain
-          foreground: '#1F2937', // Graphite
+          DEFAULT: '#FAFAFA', // Background claro
+          foreground: '#212020', // Texto escuro
         },
-        background: '#F7F9FB', // Porcelain
-        foreground: '#1F2937', // Graphite
+        background: '#FAFAFA', // Background claro
+        foreground: '#212020', // Texto escuro
         muted: {
-          DEFAULT: '#EEF2F7', // Cloud
-          foreground: '#1F2937', // Graphite
+          DEFAULT: '#F7F7F7', // Background alternativo
+          foreground: '#212020', // Texto escuro
         },
         border: '#E5E7EB',
         input: '#E5E7EB',
-        ring: '#1E3A5F', // Navy Serenity
+        ring: '#7FC2B4', // Verde água
         card: {
           DEFAULT: '#FFFFFF',
-          foreground: '#1F2937', // Graphite
+          foreground: '#212020', // Texto escuro
         },
         destructive: {
           DEFAULT: '#DC2626',
@@ -65,11 +65,11 @@ export default {
         // 'accent': '#C9A961',
       },
       fontFamily: {
-        heading: ['"Cormorant Garamond"', 'Georgia', 'serif'],
-        body: ['Inter', 'system-ui', 'sans-serif'],
-        display: ['"Cormorant Garamond"', 'serif'], // Hero
+        heading: ['Manrope', 'system-ui', 'sans-serif'],
+        body: ['Manrope', 'system-ui', 'sans-serif'],
+        display: ['Manrope', 'system-ui', 'sans-serif'], // Hero
         tangerine: ['Tangerine', 'cursive'],
-        jost: ['Jost', 'sans-serif'],
+        jost: ['Manrope', 'system-ui', 'sans-serif'],
       },
       fontSize: {
         // Hero

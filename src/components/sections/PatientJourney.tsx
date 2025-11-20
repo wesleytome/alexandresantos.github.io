@@ -37,16 +37,20 @@ const journeySteps: JourneyStep[] = [
 export function PatientJourney() {
   return (
     <section 
-      className="py-20 bg-gradient-to-b from-white to-amber-50"
+      className="py-24 bg-gradient-light-to-muted"
+      // Estado anterior: bg-section-light (para reverter se necessário)
     >
-      <div className="container mx-auto px-4">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <h2 className="section-heading mb-4">
-            <span className="section-heading-primary">Jornada do</span>{' '}
-            <span className="section-heading-accent">Paciente</span>
+      <div className="container mx-auto px-4 md:px-20">
+        {/* Header - Alinhado à esquerda */}
+        <div className="section-header">
+          <p className="section-label">
+            Acompanhamento do inicio ao fim
+          </p>
+          <h2 className="section-title">
+            Jornada do Cliente
           </h2>
-          <p className="text-lg text-foreground/80 max-w-2xl mx-auto">
+          <div className="section-divider"></div>
+          <p className="section-description">
             Desmistificamos os processos para reduzir ansiedade e garantir sua tranquilidade em cada etapa
           </p>
         </div>
@@ -56,19 +60,34 @@ export function PatientJourney() {
           {/* Coluna Esquerda: Resumo */}
           <div className="flex flex-col justify-center">
             <div className="space-y-6">
-              <h3 className="text-2xl md:text-3xl font-body font-semibold text-foreground">
+              <h3 
+                className="font-semibold"
+                style={{ 
+                  color: '#7FC2B4',
+                  fontSize: '30px',
+                  lineHeight: '1.3'
+                }}
+              >
                 Seu Caminho para o Sorriso Perfeito
               </h3>
-              <p className="text-base text-foreground/80 leading-relaxed">
+              <p 
+                className="leading-relaxed text-primary text-body-large"
+              >
                 Entendemos que cada paciente é único e merece um atendimento personalizado. Nossa jornada foi cuidadosamente planejada para garantir que você se sinta confortável e informado em cada etapa do processo.
               </p>
-              <p className="text-base text-foreground/80 leading-relaxed">
+              <p 
+                className="leading-relaxed text-primary text-body-large"
+              >
                 Desde a primeira consulta até o acompanhamento pós-tratamento, nossa equipe está comprometida em oferecer excelência, transparência e resultados que superem suas expectativas.
               </p>
               <div className="pt-4">
-                <div className="flex items-center gap-3" style={{ color: '#2d4440' }}>
-                  <CheckCircle2 className="h-5 w-5" />
-                  <span className="font-medium">Processo transparente e descomplicado</span>
+                <div className="flex items-center gap-3">
+                  <CheckCircle2 className="h-5 w-5 icon-brand" />
+                  <span 
+                    className="font-medium text-brand text-label"
+                  >
+                    Processo transparente e descomplicado
+                  </span>
                 </div>
               </div>
             </div>
@@ -80,7 +99,7 @@ export function PatientJourney() {
             <div 
               className="absolute left-8 top-0 bottom-0 w-0.5"
               style={{
-                background: 'linear-gradient(to bottom, rgba(45, 68, 64, 0.3), rgba(90, 114, 93, 0.5), rgba(45, 68, 64, 0.3))'
+                background: 'linear-gradient(to bottom, rgba(127, 194, 180, 0.3), rgba(127, 194, 180, 0.5), rgba(127, 194, 180, 0.3))'
               }}
             ></div>
 
@@ -93,18 +112,21 @@ export function PatientJourney() {
                     <div 
                       className="w-16 h-16 rounded-full border-4 shadow-lg flex items-center justify-center"
                       style={{ 
-                        backgroundColor: '#f5f3f0',
-                        borderColor: '#5a725d'
+                        backgroundColor: '#FAFAFA',
+                        borderColor: '#7FC2B4'
                       }}
                     >
-                      <div style={{ color: '#2d4440' }}>
+                      <div className="icon-brand">
                         {step.icon}
                       </div>
                     </div>
                     {/* Número da etapa */}
                     <div 
-                      className="absolute -top-2 -right-2 w-7 h-7 rounded-full text-white flex items-center justify-center font-bold text-xs shadow-md"
-                      style={{ backgroundColor: '#2d4440' }}
+                      className="absolute -top-2 -right-2 w-7 h-7 rounded-full flex items-center justify-center font-bold text-xs shadow-md"
+                      style={{ 
+                        backgroundColor: '#7FC2B4',
+                        color: '#FFFFFF'
+                      }}
                     >
                       {step.number}
                     </div>
@@ -112,10 +134,24 @@ export function PatientJourney() {
 
                   {/* Conteúdo da etapa */}
                   <div className="flex-1 pt-2">
-                    <h3 className="text-subtitle font-body text-foreground mb-2">
+                    <h3 
+                      className="font-semibold mb-2"
+                      style={{ 
+                        color: '#7FC2B4',
+                        fontSize: '19px',
+                        lineHeight: '1.4'
+                      }}
+                    >
                       {step.title}
                     </h3>
-                    <p className="text-sm text-foreground/70 leading-relaxed">
+                    <p 
+                      className="leading-relaxed"
+                      style={{ 
+                        color: '#212020',
+                        fontSize: '17px',
+                        lineHeight: '1.5'
+                      }}
+                    >
                       {step.description}
                     </p>
                   </div>

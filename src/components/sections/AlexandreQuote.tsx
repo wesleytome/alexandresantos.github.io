@@ -1,16 +1,14 @@
 export function AlexandreQuote() {
   return (
     <section 
-      className="py-16"
-      style={{ backgroundColor: '#e9e0cd' }}
+      className="py-24 bg-section-muted"
     >
-      <div className="container mx-auto px-4">
-        <div className="max-w-4xl mx-auto">
+      <div className="container mx-auto px-4 md:px-20">
+        <div className="max-w-lg mx-auto">
           {/* Citação */}
           <blockquote className="text-center">
             <p 
-              className="text-xl md:text-2xl lg:text-3xl font-display italic leading-relaxed mb-8"
-              style={{ color: '#34353a' }}
+              className="font-light leading-[1.9] mb-5"
             >
               "Acredito que cada sorriso conta uma história única. Minha missão é transformar essa história em algo ainda mais especial, combinando a excelência técnica da odontologia com a arte da harmonização facial, sempre priorizando o bem-estar e a satisfação de cada paciente."
             </p>
@@ -18,8 +16,7 @@ export function AlexandreQuote() {
             {/* Assinatura */}
             <div className="flex justify-center">
               <span 
-                className="font-tangerine text-4xl md:text-5xl"
-                style={{ color: '#c1a280' }}
+                className="text-brand text-3xl md:text-3xl font-bold"
               >
                 Alexandre Santos
               </span>

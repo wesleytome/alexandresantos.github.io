@@ -70,7 +70,7 @@ export function BeforeAfterSlider({
     <div className="relative w-full h-full group">
       <div
         ref={containerRef}
-        className="relative w-full h-[400px] overflow-hidden rounded-lg cursor-col-resize"
+        className="relative w-full h-[500px] overflow-hidden cursor-col-resize"
         onMouseDown={handleMouseDown}
         onTouchStart={handleMouseDown}
       >
@@ -101,21 +101,28 @@ export function BeforeAfterSlider({
           style={{ left: `${sliderPosition}%`, transform: 'translateX(-50%)' }}
         >
           {/* Círculo com setas */}
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center">
-            <ChevronLeft className="h-4 w-4 text-foreground absolute left-1" />
-            <ChevronRight className="h-4 w-4 text-foreground absolute right-1" />
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-gray-200 rounded-full shadow-lg flex items-center justify-center">
+            <ChevronLeft className="h-4 w-4 text-black absolute left-1" />
+            <ChevronRight className="h-4 w-4 text-black absolute right-1" />
           </div>
         </div>
 
-        {/* Overlay com informações - aparece no hover */}
-        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 rounded-lg">
-          <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-            <div className="text-sm font-semibold mb-1">{treatmentType}</div>
-            <div className="flex gap-4 text-xs text-white/80">
-              {treatmentTime && <span>⏱️ {treatmentTime}</span>}
-              {patientAge && <span>👤 {patientAge} anos</span>}
-            </div>
-          </div>
+        {/* Textos "Antes" e "Depois" */}
+        <div className="absolute bottom-6 left-6 z-20">
+          <span 
+            className="text-2xl font-normal"
+            style={{ color: '#FFFFFF' }}
+          >
+            Antes
+          </span>
+        </div>
+        <div className="absolute bottom-6 right-6 z-20">
+          <span 
+            className="text-2xl font-normal"
+            style={{ color: '#FFFFFF' }}
+          >
+            Depois
+          </span>
         </div>
       </div>
     </div>

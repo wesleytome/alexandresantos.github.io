@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { services } from '@/data/services'
 import { AspectRatio } from '@/components/ui/aspect-ratio'
 import { ArrowRight } from 'lucide-react'
+import { useRef } from 'react'
 import type { Service } from '@/data/services'
 
 interface ServiceCardProps {
@@ -13,37 +13,48 @@ interface ServiceCardProps {
 
 function ServiceCard({ service }: ServiceCardProps) {
   return (
-    <div className="group h-full bg-white rounded-lg overflow-hidden shadow-sm flex flex-col hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-      {/* Imagem com badge sobreposta */}
-      <div className="relative w-full overflow-hidden">
-        <AspectRatio ratio={4 / 3}>
-          <img
-            src={service.image}
-            alt={service.title}
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-          />
-        </AspectRatio>
-        {/* Badge sobre a imagem */}
-        <div className="absolute top-4 right-4 z-10">
-          <Badge
-            className={service.category === 'odontologia' ? 'badge-odontologia' : 'badge-hof'}
-          >
-            {service.category === 'odontologia' ? 'Odontologia' : 'Estética Facial'}
-          </Badge>
+    <>
+      <style>{`
+        .service-card-wrapper:hover .service-card-title,
+        .service-card-wrapper:hover .service-card-description {
+          color: #FAFAFA !important;
+        }
+      `}</style>
+      <div className="service-card-wrapper card-hover group h-full rounded-lg overflow-hidden flex flex-col">
+        {/* Imagem com badge sobreposta */}
+        <div className="relative w-full overflow-hidden">
+          <AspectRatio ratio={4 / 3}>
+            <img
+              src={service.image}
+              alt={service.title}
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            />
+          </AspectRatio>
+          {/* Badge sobre a imagem */}
+          <div className="absolute top-4 right-4 z-10">
+            <Badge
+              className={service.category === 'odontologia' ? 'badge-odontologia' : 'badge-hof'}
+            >
+              {service.category === 'odontologia' ? 'Odontologia' : 'Estética Facial'}
+            </Badge>
+          </div>
         </div>
-      </div>
-      
-      {/* Conteúdo */}
-      <div className="p-6 flex flex-col flex-grow">
-        {/* Título */}
-        <h3 className="text-subtitle font-body text-fg mb-3">
-          {service.title}
-        </h3>
         
-        {/* Descrição breve */}
-        <p className="text-sm text-foreground/80 leading-relaxed mb-6 flex-grow">
-          {service.shortDescription}
-        </p>
+        {/* Conteúdo */}
+        <div className="p-6 flex flex-col flex-grow">
+          {/* Título */}
+          <h3 
+            className="service-card-title card-text text-subtitle font-body mb-3" 
+          >
+            {service.title}
+          </h3>
+          
+          {/* Descrição breve */}
+          <p 
+            className="service-card-description card-text text-sm leading-relaxed mb-6 flex-grow" 
+          >
+            {service.shortDescription}
+          </p>
         
         {/* Botão com ícone */}
         <Button
@@ -61,6 +72,83 @@ function ServiceCard({ service }: ServiceCardProps) {
         </Button>
       </div>
     </div>
+    </>
+  )
+}
+
+function ServiceCategoryBlock({ 
+  category, 
+  services, 
+  categoryName 
+}: { 
+  category: 'odontologia' | 'estetica'
+  services: Service[]
+  categoryName: string
+}) {
+  const scrollContainerRef = useRef<HTMLDivElement>(null)
+
+  const scrollToService = (serviceId: string) => {
+    const cardElement = document.getElementById(`service-${serviceId}`)
+    if (cardElement && scrollContainerRef.current) {
+      const container = scrollContainerRef.current
+      const cardLeft = cardElement.offsetLeft
+      const cardWidth = cardElement.offsetWidth
+      const containerWidth = container.offsetWidth
+      const scrollLeft = cardLeft - (containerWidth / 2) + (cardWidth / 2)
+      
+      container.scrollTo({
+        left: scrollLeft,
+        behavior: 'smooth'
+      })
+    }
+  }
+
+  return (
+    <div className="grid grid-cols-1 lg:grid-cols-[300px_1fr] gap-8 mt-12">
+      {/* Lista vertical à esquerda */}
+      <div className="bg-dark p-6 rounded-lg">
+        <h3 className="text-xl font-bold text-brand mb-6">{categoryName}</h3>
+        <ul className="space-y-3 mb-6">
+          {services.map((service) => (
+            <li key={service.id}>
+              <button
+                onClick={() => scrollToService(service.id)}
+                className="text-left w-full text-light hover:text-brand transition-colors text-sm"
+              >
+                {service.title}
+              </button>
+            </li>
+          ))}
+        </ul>
+        <Button 
+          asChild 
+          className="w-full btn-primary border-0"
+        >
+          <Link to={category === 'odontologia' ? '/odontologia' : '/estetica-facial'}>
+            Ver todos os serviços
+          </Link>
+        </Button>
+      </div>
+
+      {/* Cards horizontais à direita */}
+      <div 
+        ref={scrollContainerRef}
+        className="overflow-x-auto pb-4 scrollbar-hide"
+      >
+        <div className="flex gap-6" style={{ width: 'max-content' }}>
+          {services.map((service) => (
+            <div 
+              key={service.id} 
+              id={`service-${service.id}`}
+              className="flex-shrink-0" 
+              style={{ width: '320px' }}
+            >
+              <ServiceCard service={service} />
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
   )
 }
 
@@ -70,83 +158,37 @@ export function ServicesSection() {
 
   return (
     <section 
-      className="py-20 bg-gradient-to-b from-amber-50 to-white"
+      className="py-24 bg-gradient-muted-to-light"
+      // Estado anterior: bg-section-muted (para reverter se necessário)
     >
-      <div className="container mx-auto px-4">
-        {/* Header */}
-        <div className="max-w-3xl mb-12">
-          <h2 className="section-heading">
-            <span className="section-heading-primary">Descubra um</span>{' '}
-            <span className="section-heading-accent">novo você</span>
+      <div className="container mx-auto px-4 md:px-20">
+        {/* Header - Alinhado à esquerda */}
+        <div className="section-header">
+          <p className="section-label">
+            Nossos serviços
+          </p>
+          <h2 className="section-title">
+            Descubra um novo você
           </h2>
-          {/* Linha horizontal curta embaixo de "Descubra um" */}
-          <div className="section-heading-divider"></div>
-          <p className="text-base text-foreground/80 leading-relaxed max-w-2xl">
+          <div className="section-divider"></div>
+          <p className="section-description">
             Quando se trata de escolher uma clínica estética, não confie seu corpo a qualquer pessoa. Escolha qualquer um de nossos serviços de procedimentos estéticos e reconstrutivos.
           </p>
         </div>
 
-        {/* Tabs com serviços */}
-        <Tabs defaultValue="odontologia" className="w-full">
-          <TabsList className="services-tabs-list">
-            <TabsTrigger 
-              value="odontologia"
-              className="services-tabs-trigger"
-            >
-              Odontologia
-              <Badge 
-                variant="secondary" 
-                className="ml-2 h-5 min-w-5 px-1.5 text-xs font-semibold"
-                style={{ 
-                  backgroundColor: 'rgba(255, 255, 255, 0.2)',
-                  color: 'inherit'
-                }}
-              >
-                {odontologiaServices.length}
-              </Badge>
-            </TabsTrigger>
-            <TabsTrigger 
-              value="estetica"
-              className="services-tabs-trigger"
-            >
-              Estética Facial
-              <Badge 
-                variant="secondary" 
-                className="ml-2 h-5 min-w-5 px-1.5 text-xs font-semibold"
-                style={{ 
-                  backgroundColor: 'rgba(255, 255, 255, 0.2)',
-                  color: 'inherit'
-                }}
-              >
-                {esteticaServices.length}
-              </Badge>
-            </TabsTrigger>
-          </TabsList>
+        {/* Bloco Odontologia */}
+        <ServiceCategoryBlock 
+          category="odontologia"
+          services={odontologiaServices}
+          categoryName="Odontologia"
+        />
 
-          {/* Tab Odontologia */}
-          <TabsContent 
-            value="odontologia" 
-            className="mt-0 data-[state=active]:animate-in data-[state=active]:fade-in-0 data-[state=active]:duration-300"
-          >
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {odontologiaServices.map((service) => (
-                <ServiceCard key={service.id} service={service} />
-              ))}
-            </div>
-          </TabsContent>
-
-          {/* Tab Estética Facial */}
-          <TabsContent 
-            value="estetica" 
-            className="mt-0 data-[state=active]:animate-in data-[state=active]:fade-in-0 data-[state=active]:duration-300"
-          >
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {esteticaServices.map((service) => (
-                <ServiceCard key={service.id} service={service} />
-              ))}
-            </div>
-          </TabsContent>
-        </Tabs>
+        {/* Bloco Estética Facial */}
+        <ServiceCategoryBlock 
+          category="estetica"
+          services={esteticaServices}
+          categoryName="Estética Facial"
+        />
       </div>
     </section>
   )
