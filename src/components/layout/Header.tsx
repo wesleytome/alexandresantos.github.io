@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { Menu, Phone, ArrowRight } from 'lucide-react'
+import { Menu, Phone } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import {
   Sheet,

@@ -94,8 +94,7 @@ export function Testimonials() {
           {/* Seta esquerda */}
           <button
             onClick={prevTestimonial}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-14 z-20 w-12 h-12 flex items-center justify-center transition-opacity hover:opacity-80"
-            className="btn-nav"
+            className="btn-nav absolute left-0 top-1/2 -translate-y-1/2 -translate-x-14 z-20 w-12 h-12 flex items-center justify-center transition-opacity hover:opacity-80"
             aria-label="Depoimento anterior"
           >
             <ChevronLeft className="h-6 w-6 text-white" />
@@ -104,8 +103,7 @@ export function Testimonials() {
           {/* Seta direita */}
           <button
             onClick={nextTestimonial}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-14 z-20 w-12 h-12 flex items-center justify-center transition-opacity hover:opacity-80"
-            className="btn-nav"
+            className="btn-nav absolute right-0 top-1/2 -translate-y-1/2 translate-x-14 z-20 w-12 h-12 flex items-center justify-center transition-opacity hover:opacity-80"
             aria-label="Próximo depoimento"
           >
             <ChevronRight className="h-6 w-6 text-white" />

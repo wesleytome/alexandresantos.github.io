@@ -12,9 +12,9 @@ interface BeforeAfterSliderProps {
 export function BeforeAfterSlider({
   beforeImage,
   afterImage,
-  treatmentType,
-  treatmentTime,
-  patientAge
+  treatmentType: _treatmentType,
+  treatmentTime: _treatmentTime,
+  patientAge: _patientAge
 }: BeforeAfterSliderProps) {
   const [sliderPosition, setSliderPosition] = useState(50)
   const [isDragging, setIsDragging] = useState(false)

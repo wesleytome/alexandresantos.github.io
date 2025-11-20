@@ -133,22 +133,20 @@ export function ClinicDifferentials() {
                         {/* Conteúdo */}
                         <div className="flex-1">
                           <h3 
-                            className="font-semibold mb-2"
-                      className="text-primary"
-                      style={{ 
-                        fontSize: '19px',
-                        lineHeight: '1.4'
-                      }}
+                            className="text-primary font-semibold mb-2"
+                            style={{ 
+                              fontSize: '19px',
+                              lineHeight: '1.4'
+                            }}
                           >
                             {differential.title}
                           </h3>
                           <p 
-                            className="leading-relaxed"
-                      className="text-primary"
-                      style={{ 
-                        fontSize: '15px',
-                        lineHeight: '1.5'
-                      }}
+                            className="text-primary leading-relaxed"
+                            style={{ 
+                              fontSize: '15px',
+                              lineHeight: '1.5'
+                            }}
                           >
                             {differential.description}
                           </p>

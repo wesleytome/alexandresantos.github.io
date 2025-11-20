@@ -130,8 +130,7 @@ export function BeforeAfterSection() {
 
           {/* Container da imagem */}
           <div 
-            className="relative rounded-t-2xl overflow-hidden"
-            className="bg-section-light"
+            className="bg-section-light relative rounded-t-2xl overflow-hidden"
           >
             {/* Label no topo */}
             <div 
