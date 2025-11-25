@@ -23,7 +23,7 @@ export function Header({ transparent = false }: HeaderProps) {
         className="w-full py-4"
         style={{ backgroundColor: '#FAFAFA' }}
       >
-        <div className="container mx-auto px-4 md:px-20">
+        <div className="container mx-auto max-w-full px-4 md:px-20">
           <div className="flex justify-between items-center">
             {/* Left Navigation Links */}
             <nav className="hidden lg:flex items-center gap-6">

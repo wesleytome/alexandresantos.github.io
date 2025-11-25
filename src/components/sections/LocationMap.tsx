@@ -2,8 +2,29 @@ import { Button } from '@/components/ui/button'
 import { MapPin, Phone, Mail, Calendar, Navigation } from 'lucide-react'
 import { businessInfo } from '@/data/businessInfo'
 import { Link } from 'react-router-dom'
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
+import 'leaflet/dist/leaflet.css'
+import L from 'leaflet'
+
+// Fix para ícone do marcador no Leaflet com Vite
+import icon from 'leaflet/dist/images/marker-icon.png'
+import iconShadow from 'leaflet/dist/images/marker-shadow.png'
+
+const DefaultIcon = L.icon({
+  iconUrl: icon,
+  shadowUrl: iconShadow,
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  shadowSize: [41, 41]
+})
+
+L.Marker.prototype.options.icon = DefaultIcon
 
 export function LocationMap() {
+  const latitude = -23.00139106245931
+  const longitude = -43.42108961857137
+  
   const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
     `${businessInfo.address.street}, ${businessInfo.address.city}, ${businessInfo.address.state}`
   )}`
@@ -14,18 +35,23 @@ export function LocationMap() {
         <div className="grid grid-cols-1 lg:grid-cols-[7fr_3fr] h-[600px] rounded-lg overflow-hidden shadow-lg">
           {/* Mapa à esquerda - 70% */}
           <div className="relative w-full h-full">
-            <iframe
-              src={`https://www.google.com/maps/embed/v1/place?key=YOUR_API_KEY&q=${encodeURIComponent(
-                `${businessInfo.address.street}, ${businessInfo.address.city}, ${businessInfo.address.state}`
-              )}`}
-              width="100%"
-              height="100%"
-              style={{ border: 0 }}
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              title="Localização da Clínica"
-            ></iframe>
+            <MapContainer
+              center={[latitude, longitude]}
+              zoom={15}
+              style={{ height: '100%', width: '100%', zIndex: 0 }}
+              scrollWheelZoom={false}
+            >
+              <TileLayer
+                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+              />
+              <Marker position={[latitude, longitude]}>
+                <Popup>
+                  <strong>{businessInfo.name}</strong><br />
+                  {businessInfo.address.street}, {businessInfo.address.city}
+                </Popup>
+              </Marker>
+            </MapContainer>
           </div>
 
           {/* Painel de informações à direita - 30% */}

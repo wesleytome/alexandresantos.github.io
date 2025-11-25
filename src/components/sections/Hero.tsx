@@ -6,76 +6,65 @@ export function Hero() {
       className="relative flex items-center"
       style={{ backgroundColor: '#7FC2B4' }}
     >
-      <div className="container mx-auto px-4 md:px-20 relative z-10 w-full pt-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center min-h-[65vh]">
+      <div className="container mx-auto px-4 md:px-8 xl:px-20 relative z-10 w-full pt-8 lg:pt-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 xl:gap-12 items-center min-h-[60vh] lg:min-h-[65vh] xl:min-h-[70vh]">
           {/* Left Content */}
-          <div className="space-y-8 flex flex-col justify-center ">
+          <div className="space-y-6 lg:space-y-8 flex flex-col justify-center">
             {/* Nome - Dividido em 3 linhas */}
-            <div className="mb-5">
-              <h1 className="font-bold leading-none" style={{ color: '#FFFFFF', fontSize: 'clamp(3rem, 6vw, 5rem)' }}>
-                <span className="block" style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)' }}>Dr.</span>
-                <span className="block">Alexandre</span>
-                <span className="block">Santos</span>
+            <div className="mb-4 lg:mb-5">
+              <h1 className="font-bold leading-none" style={{ color: '#FFFFFF' }}>
+                <span className="block text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl">Dr.</span>
+                <span className="block text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl">Alexandre</span>
+                <span className="block text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl">Santos</span>
               </h1>
             </div>
 
             {/* Especialização */}
-            <div className="mb-5">
+            <div className="mb-4 lg:mb-5">
               <p 
                 className="leading-relaxed" 
                 style={{ 
                   color: '#FFFFFF',
                   fontWeight: 100,
-                  fontSize: 'clamp(1rem, 1.5vw, 1.5rem)',
                   lineHeight: '1.2'
                 }}
               >
-                Odontologia<br />avançada e<br />Estética Facial
+                <span className="text-base lg:text-lg xl:text-xl 2xl:text-2xl">Odontologia</span><br />
+                <span className="text-base lg:text-lg xl:text-xl 2xl:text-2xl">avançada e</span><br />
+                <span className="text-base lg:text-lg xl:text-xl 2xl:text-2xl">Estética Facial</span>
               </p>
             </div>
 
             {/* CTA Button */}
-            <div className="pt-4">
+            <div className="pt-2 lg:pt-4">
               <Link
                 to="/contato"
                 className="relative inline-flex items-center justify-between transition-all hover:opacity-90 overflow-hidden mb-0"
                 style={{ 
                   backgroundColor: '#212020',
                   color: '#FFFFFF',
-                  width: '300px',
-                  height: '125px',
-                  padding: '0 24px',
+                  padding: '0 20px',
                   borderRadius: '8px'
                 }}
               >
-                <div className="flex flex-col">
-                  <span style={{ 
-                    fontSize: '36px', 
-                    lineHeight: '38px',
-                    fontWeight: 400
-                  }}>
+                <div className="flex flex-col py-4 lg:py-6">
+                  <span className="text-2xl lg:text-3xl xl:text-4xl leading-tight font-normal">
                     Quero me
                   </span>
-                  <span style={{ 
-                    fontSize: '36px', 
-                    lineHeight: '38px',
-                    fontWeight: 400
-                  }}>
+                  <span className="text-2xl lg:text-3xl xl:text-4xl leading-tight font-normal">
                     consultar
                   </span>
                 </div>
                 
                 {/* SVG Lines - Canto inferior direito */}
                 <svg 
-                  width="60" 
-                  height="60" 
+                  className="absolute w-12 h-12 lg:w-14 lg:h-14 xl:w-16 xl:h-16"
                   viewBox="0 0 60 60" 
                   fill="none" 
-                  className="absolute"
                   style={{ 
                     pointerEvents: 'none',
-                    bottom: '15px',
-                    right: '15px'
+                    bottom: '12px',
+                    right: '12px'
                   }}
                 >
                   {/* Linha horizontal inferior */}
@@ -103,6 +92,23 @@ export function Hero() {
 
           {/* Right Content - Espaço reservado para imagem (será posicionada absolutamente no wrapper) */}
           <div className="hidden lg:block relative h-full"></div>
+        </div>
+        
+        {/* Imagem na base do Hero - apenas em telas < 1024px (mobile) */}
+        <div className="block lg:hidden mt-8 pb-6">
+          <div className="flex justify-center items-end">
+            <div className="relative w-full max-w-sm">
+              {/* <img
+                src={alexandreImage}
+                alt="Dr. Alexandre Santos"
+                className="w-full h-auto object-contain"
+                style={{ 
+                  filter: 'drop-shadow(0 10px 30px rgba(0,0,0,0.1))',
+                  maxHeight: '80vh'
+                }}
+              /> */}
+            </div>
+          </div>
         </div>
       </div>
     </section>
